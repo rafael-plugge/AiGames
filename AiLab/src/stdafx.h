@@ -10,6 +10,11 @@
 /*********************************/
 /**    BEGIN Debug Libraries    **/
 /*********************************/
+#pragma comment(lib,"sfml-graphics-d.lib")
+#pragma comment(lib,"sfml-audio-d.lib")
+#pragma comment(lib,"sfml-system-d.lib")
+#pragma comment(lib,"sfml-window-d.lib")
+#pragma comment(lib,"sfml-network-d.lib")
 /*********************************/
 /**     END Debug Libraries     **/
 /*********************************/
@@ -64,6 +69,7 @@
 #include <istream>
 #include <ostream>
 #include <fstream>
+#include <iostream>
 #include <filesystem>
 
 // STL Multithreading libraries
@@ -78,4 +84,16 @@
 /**         Includes here       **/
 /*********************************/
 
+// SFML Library
+#include <SFML/System.hpp>
+#include <SFML/Main.hpp>
+#include <SFML/Graphics.hpp>
+#include <SFML/Network.hpp>
+#include <SFML/Audio.hpp>
 
+// Global constants
+namespace g
+{
+	template<typename T>
+	constexpr T pi() { return static_cast<T>(std::acos(-1.0)); }
+}
