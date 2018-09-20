@@ -62,6 +62,8 @@
 #include <tuple>
 #include <initializer_list>
 #include <limits>
+#include <variant>
+#include <optional>
 
 // STL Input/Output libraries
 #include <string>
@@ -91,9 +93,15 @@
 #include <SFML/Network.hpp>
 #include <SFML/Audio.hpp>
 
+// Entt Library
+#include <entt/entt.hpp>
+
 // Global constants
-namespace g
+namespace app
 {
 	template<typename T>
 	constexpr T pi() { return static_cast<T>(std::acos(-1.0)); }
+	typedef std::chrono::duration<double> seconds;
+	
+	typedef entt::DefaultRegistry Registry;
 }

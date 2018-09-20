@@ -1,6 +1,6 @@
 #pragma once
 
-namespace g
+namespace app
 {
 	class Collisions abstract
 	{

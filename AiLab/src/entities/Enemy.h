@@ -1,29 +1,14 @@
 #pragma once
 
-#include "collisions/Collisions.h"
-
-namespace g
+namespace app::ent
 {
 	class Enemy
 	{
 	public:
-		Enemy(sf::RenderWindow & window);
+		Enemy() = delete;
+		Enemy(Enemy const &) = delete;
+		Enemy(Enemy &&) = delete;
 
-		void update();
-		void render();
-
-		void generateNewDirection();
-	private: // member variables
-		sf::RenderWindow & _window;
-
-		sf::RectangleShape _renderShape;
-		sf::Vector2f _position;
-		float _speed;
-		sf::Vector2f _velocityDir;
-
-	private: // static variables
-		static std::default_random_engine _randomGeneratorEngine;
-		static std::uniform_real_distribution<float> _randomDistribution;
-		static const float randomAngle();
+		static uint32_t create(app::Registry & registry);
 	};
 }

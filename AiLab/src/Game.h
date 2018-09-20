@@ -1,10 +1,9 @@
 #pragma once
 
-#include "system/Keyhandler.h"
-#include "entities/Player.h"
-#include "entities/Enemy.h"
+#include "utilities/Keyhandler.h"
+#include "system/BaseSystem.h"
 
-namespace g
+namespace app
 {
 	class Game
 	{
@@ -14,29 +13,35 @@ namespace g
 		int run();
 	private:
 		bool init();
+		bool createEntities();
+		bool createSystems();
+
 		void pollEvents();
-		void update();
+		void update(app::seconds const & dt);
 		void render();
 
 	private: // member variables
-		bool _gameLoop;
+		bool m_gameLoop;
 		
 		// rendering
-		sf::RenderWindow _window;
-		sf::VideoMode _windowBuffer;
-		std::string _windowTitle;
+		sf::RenderWindow m_window;
+		sf::VideoMode m_windowBuffer;
+		std::string m_windowTitle;
 
 		// Events
-		sf::Event _event;
-		g::Keyhandler _keyhandler;
+		sf::Event m_event;
+		app::Keyhandler<sf::Keyboard::Key> m_keyhandler;
 
-		// entities
-		g::Player _player;
-		g::Enemy _enemy;
+		// Entity Component System
+		entt::DefaultRegistry m_registry;
+		std::vector<std::unique_ptr<sys::BaseSystem>> m_updateSystems;
+		std::vector<std::unique_ptr<sys::BaseSystem>> m_renderSystems;
 
 	private: // static variables
-		static const sf::Color _ClearColor;
-		static constexpr std::chrono::nanoseconds _UpdateStep = 
+		static const sf::Color s_clearColor;
+		static constexpr std::chrono::nanoseconds s_updateStep = 
 			std::chrono::duration_cast<std::chrono::nanoseconds>(std::chrono::duration<float, std::milli>(1 / 60.0f * 1000.0f));
+		static constexpr app::seconds s_updateStepSec =
+			std::chrono::duration_cast<app::seconds>(std::chrono::duration<double, std::milli>(1 / 60.0 * 1000.0));
 	};
 }

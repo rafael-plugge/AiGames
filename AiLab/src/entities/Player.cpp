@@ -1,37 +1,28 @@
 #include "stdafx.h"
 #include "Player.h"
+#include "components/Location.h"
+#include "components/Motion.h"
+#include "components/Render.h"
 
 
-g::Player::Player(sf::RenderWindow & window)
-	: _window{ window }
-
-	, _incrementSpeed(false)
-	, _decrementSpeed(false)
-
-	, _renderShape{ {200.0f, 200.0f} }
-	, _position{ 1366 / 2.f + 200, 768 / 2.0f }
-	, _speed{ 0.0f }
-	, _velocityDir{ 0.0f, -1.0f }
+uint32_t app::ent::Player::create(app::Registry & registry)
 {
-	_renderShape.setFillColor(sf::Color::Blue);
+	auto entity = registry.create();
+
+	auto location = comp::Location();
+	location.position = { 200.0f, 200.0f };
+	location.angle = 0.0f;
+	registry.assign<comp::Location>(entity, std::move(location));
+
+	auto motion = comp::Motion();
+	motion.velocity = { 0.0f, 0.0f };
+	motion.angularSpeed = 0.0f;
+	registry.assign<comp::Motion>(entity, std::move(motion));
+
+	auto render = comp::Render();
+	render.size = { 100.0f, 100.0f };
+	render.texture = sf::Color{ 0u, 0u, 255u, 255u };
+	registry.assign<comp::Render>(entity, std::move(render));
+
+	return entity;
 }
-
-g::Player::~Player()
-{
-}
-
-void g::Player::update()
-{
-	if (_incrementSpeed) { _speed += _Acceleration; }
-	if (_decrementSpeed) { _speed -= _Acceleration; }
-
-	_position += _velocityDir * _speed;
-	g::Collisions::LoopInWindow(_window.getSize(), _position, _renderShape.getSize());
-}
-
-void g::Player::render()
-{
-	_renderShape.setPosition(_position);
-	_window.draw(_renderShape);
-}
-

@@ -1,39 +1,27 @@
 #include "stdafx.h"
 #include "Enemy.h"
+#include "components/Location.h"
+#include "components/Motion.h"
+#include "components/Render.h"
 
-std::default_random_engine g::Enemy::_randomGeneratorEngine = std::default_random_engine();
-std::uniform_real_distribution<float> g::Enemy::_randomDistribution = std::uniform_real_distribution<float>(-(g::pi<float>() / 2.0f), g::pi<float>() / 2.0f);
-
-g::Enemy::Enemy(sf::RenderWindow & window)
-	: _window(window)
-	, _renderShape{ {150.0f, 150.0f} }
-	, _position{ 1366 / 2.0f - 200, 768 / 2.0f }
-	, _speed{ 10.f }
-	, _velocityDir{ 0.0f, -1.0f }
+uint32_t app::ent::Enemy::create(app::Registry & registry)
 {
-	_renderShape.setFillColor(sf::Color::Red);
-	this->generateNewDirection();
-}
+	auto entity = registry.create();
 
-void g::Enemy::update()
-{
-	_position += _velocityDir * _speed;
-	g::Collisions::LoopInWindow(_window.getSize(), _position, _renderShape.getSize());
-}
+	auto location = comp::Location();
+	location.position = { 300.0f, 200.0f };
+	location.angle = 0.0f;
+	registry.assign<comp::Location>(entity, std::move(location));
 
-void g::Enemy::render()
-{
-	_renderShape.setPosition(_position);
-	_window.draw(_renderShape);
-}
+	auto motion = comp::Motion();
+	motion.velocity = { 4.0f * (1 / 60.0f), 0.0f };
+	motion.angularSpeed = 0.0f;
+	registry.assign<comp::Motion>(entity, std::move(motion));
 
-void g::Enemy::generateNewDirection()
-{
-	const float randomAngleInRadians = this->randomAngle();
-	_velocityDir = { std::cosf(randomAngleInRadians), std::sinf(randomAngleInRadians) };
-}
+	auto render = comp::Render();
+	render.size = { 20.0f, 20.0f };
+	render.texture = sf::Color{ 255u, 0u, 0u, 255u };
+	registry.assign<comp::Render>(entity, std::move(render));
 
-const float g::Enemy::randomAngle()
-{
-	return _randomDistribution(_randomGeneratorEngine);
+	return std::move(entity);
 }

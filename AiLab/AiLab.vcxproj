@@ -140,6 +140,9 @@ C:\windows\system32\xcopy /Y "$(ProjectDir)deps\bin\debug\*.pdg" "$(TargetDir)"<
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="src\collisions\Collisions.cpp" />
+    <ClCompile Include="src\components\Motion.cpp" />
+    <ClCompile Include="src\components\Location.cpp" />
+    <ClCompile Include="src\components\Render.cpp" />
     <ClCompile Include="src\entities\Enemy.cpp" />
     <ClCompile Include="src\entities\Player.cpp" />
     <ClCompile Include="src\Game.cpp" />
@@ -148,15 +151,26 @@ C:\windows\system32\xcopy /Y "$(ProjectDir)deps\bin\debug\*.pdg" "$(TargetDir)"<
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
     </ClCompile>
-    <ClCompile Include="src\system\Keyhandler.cpp" />
+    <ClCompile Include="src\system\BaseSystem.cpp" />
+    <ClCompile Include="src\system\MotionSystem.cpp" />
+    <ClCompile Include="src\system\RenderSystem.cpp" />
+    <ClCompile Include="src\utilities\Keyhandler.cpp" />
+    <ClCompile Include="src\utilities\RenderVisitor.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\collisions\Collisions.h" />
+    <ClInclude Include="src\components\Motion.h" />
+    <ClInclude Include="src\components\Location.h" />
+    <ClInclude Include="src\components\Render.h" />
     <ClInclude Include="src\entities\Enemy.h" />
     <ClInclude Include="src\entities\Player.h" />
     <ClInclude Include="src\Game.h" />
     <ClInclude Include="src\stdafx.h" />
-    <ClInclude Include="src\system\Keyhandler.h" />
+    <ClInclude Include="src\system\BaseSystem.h" />
+    <ClInclude Include="src\system\MotionSystem.h" />
+    <ClInclude Include="src\system\RenderSystem.h" />
+    <ClInclude Include="src\utilities\Keyhandler.h" />
+    <ClInclude Include="src\utilities\RenderVisitor.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
