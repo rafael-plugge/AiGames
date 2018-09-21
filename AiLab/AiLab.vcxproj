@@ -139,7 +139,6 @@ C:\windows\system32\xcopy /Y "$(ProjectDir)deps\bin\debug\*.pdg" "$(TargetDir)"<
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="src\collisions\Collisions.cpp" />
     <ClCompile Include="src\components\Collision.cpp" />
     <ClCompile Include="src\components\Motion.cpp" />
     <ClCompile Include="src\components\Location.cpp" />
@@ -163,7 +162,6 @@ C:\windows\system32\xcopy /Y "$(ProjectDir)deps\bin\debug\*.pdg" "$(TargetDir)"<
     <ClCompile Include="src\utilities\visitors\RenderVisitor.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\collisions\Collisions.h" />
     <ClInclude Include="src\components\Collision.h" />
     <ClInclude Include="src\components\Motion.h" />
     <ClInclude Include="src\components\Location.h" />

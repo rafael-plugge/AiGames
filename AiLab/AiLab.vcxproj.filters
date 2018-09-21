@@ -60,9 +60,6 @@
     <ClCompile Include="src\entities\Enemy.cpp">
       <Filter>Source Files\entities</Filter>
     </ClCompile>
-    <ClCompile Include="src\collisions\Collisions.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="src\utilities\Keyhandler.cpp">
       <Filter>Source Files\utilities</Filter>
     </ClCompile>
@@ -115,9 +112,6 @@
     </ClInclude>
     <ClInclude Include="src\entities\Player.h">
       <Filter>Header Files\entities</Filter>
-    </ClInclude>
-    <ClInclude Include="src\collisions\Collisions.h">
-      <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\utilities\Keyhandler.h">
       <Filter>Header Files\utilities</Filter>
