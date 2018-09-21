@@ -1,6 +1,6 @@
 #pragma once
 
-namespace app
+namespace app::utils
 {
 	template<typename KeyType>
 	class Keyhandler
@@ -24,7 +24,7 @@ namespace app
 
 
 	template<typename KeyType>
-	void app::Keyhandler<KeyType>::updateKey(KeyType const & key, bool const & pressed)
+	void app::utils::Keyhandler<KeyType>::updateKey(KeyType const & key, bool const & pressed)
 	{
 		if (auto itt = _keyNowMap.find(key); itt != _keyNowMap.end())
 		{
@@ -39,13 +39,13 @@ namespace app
 	}
 
 	template<typename KeyType>
-	void app::Keyhandler<KeyType>::update()
+	void app::utils::Keyhandler<KeyType>::update()
 	{
 		_keyPrevMap = _keyNowMap;
 	}
 
 	template<typename KeyType>
-	bool app::Keyhandler<KeyType>::isKeyDown(KeyType const & key) const
+	bool app::utils::Keyhandler<KeyType>::isKeyDown(KeyType const & key) const
 	{
 		if (auto const & itt = _keyNowMap.find(key); itt != _keyNowMap.end())
 		{
@@ -56,7 +56,7 @@ namespace app
 	}
 
 	template<typename KeyType>
-	bool app::Keyhandler<KeyType>::isKeyUp(KeyType const & key) const
+	bool app::utils::Keyhandler<KeyType>::isKeyUp(KeyType const & key) const
 	{
 		if (auto const & itt = _keyNowMap.find(key); itt != _keyNowMap.end())
 		{
@@ -67,7 +67,7 @@ namespace app
 	}
 
 	template<typename KeyType>
-	bool app::Keyhandler<KeyType>::isKeyPressed(KeyType const & keyPressed) const
+	bool app::utils::Keyhandler<KeyType>::isKeyPressed(KeyType const & keyPressed) const
 	{
 		if (auto const & itt = _keyNowMap.find(keyPressed); itt != _keyNowMap.end())
 		{

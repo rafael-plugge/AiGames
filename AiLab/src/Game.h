@@ -13,6 +13,7 @@ namespace app
 		int run();
 	private:
 		bool init();
+		bool createCompDependencies();
 		bool createEntities();
 		bool createSystems();
 
@@ -26,11 +27,12 @@ namespace app
 		// rendering
 		sf::RenderWindow m_window;
 		sf::VideoMode m_windowBuffer;
+		sf::Vector2f m_windowSize;
 		std::string m_windowTitle;
 
 		// Events
 		sf::Event m_event;
-		app::Keyhandler<sf::Keyboard::Key> m_keyhandler;
+		utils::Keyhandler<sf::Keyboard::Key> m_keyHandler;
 
 		// Entity Component System
 		entt::DefaultRegistry m_registry;

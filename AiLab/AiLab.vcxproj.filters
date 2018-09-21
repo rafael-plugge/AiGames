@@ -37,6 +37,12 @@
     <Filter Include="Source Files\components">
       <UniqueIdentifier>{2db5f2f1-453c-4182-878f-6b3cec434b75}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\utilities\visitors">
+      <UniqueIdentifier>{63149287-d51e-4123-a2da-93c6e6480643}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\utilities\visitors">
+      <UniqueIdentifier>{c454fa50-6235-4a05-89f1-db7474680306}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\main.cpp">
@@ -69,9 +75,6 @@
     <ClCompile Include="src\components\Location.cpp">
       <Filter>Source Files\components</Filter>
     </ClCompile>
-    <ClCompile Include="src\utilities\RenderVisitor.cpp">
-      <Filter>Source Files\utilities</Filter>
-    </ClCompile>
     <ClCompile Include="src\system\RenderSystem.cpp">
       <Filter>Source Files\system</Filter>
     </ClCompile>
@@ -80,6 +83,24 @@
     </ClCompile>
     <ClCompile Include="src\system\MotionSystem.cpp">
       <Filter>Source Files\system</Filter>
+    </ClCompile>
+    <ClCompile Include="src\system\InputSystem.cpp">
+      <Filter>Source Files\system</Filter>
+    </ClCompile>
+    <ClCompile Include="src\components\MotionInput.cpp">
+      <Filter>Source Files\components</Filter>
+    </ClCompile>
+    <ClCompile Include="src\system\CollisionSystem.cpp">
+      <Filter>Source Files\system</Filter>
+    </ClCompile>
+    <ClCompile Include="src\components\Collision.cpp">
+      <Filter>Source Files\components</Filter>
+    </ClCompile>
+    <ClCompile Include="src\components\Dimensions.cpp">
+      <Filter>Source Files\components</Filter>
+    </ClCompile>
+    <ClCompile Include="src\utilities\visitors\RenderVisitor.cpp">
+      <Filter>Source Files\utilities\visitors</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -113,14 +134,37 @@
     <ClInclude Include="src\system\RenderSystem.h">
       <Filter>Header Files\system</Filter>
     </ClInclude>
-    <ClInclude Include="src\utilities\RenderVisitor.h">
-      <Filter>Header Files\utilities</Filter>
-    </ClInclude>
     <ClInclude Include="src\system\BaseSystem.h">
       <Filter>Header Files\system</Filter>
     </ClInclude>
     <ClInclude Include="src\system\MotionSystem.h">
       <Filter>Header Files\system</Filter>
     </ClInclude>
+    <ClInclude Include="src\system\InputSystem.h">
+      <Filter>Header Files\system</Filter>
+    </ClInclude>
+    <ClInclude Include="src\components\MotionInput.h">
+      <Filter>Header Files\components</Filter>
+    </ClInclude>
+    <ClInclude Include="src\system\CollisionSystem.h">
+      <Filter>Header Files\system</Filter>
+    </ClInclude>
+    <ClInclude Include="src\components\Collision.h">
+      <Filter>Header Files\components</Filter>
+    </ClInclude>
+    <ClInclude Include="src\components\Dimensions.h">
+      <Filter>Header Files\components</Filter>
+    </ClInclude>
+    <ClInclude Include="src\utilities\visitors\RenderVisitor.h">
+      <Filter>Header Files\utilities\visitors</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="assets\enemy.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="assets\spaceship.png">
+      <Filter>Resource Files</Filter>
+    </Image>
   </ItemGroup>
 </Project>

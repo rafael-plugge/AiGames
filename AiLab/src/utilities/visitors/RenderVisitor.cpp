@@ -13,5 +13,5 @@ void app::visitor::RenderVisitor::operator()(sf::Color const & color)
 
 void app::visitor::RenderVisitor::operator()(std::shared_ptr<sf::Texture> sptrTexture)
 {
-	_rectangleShape.setTexture(sptrTexture.get());
+	_rectangleShape.setTexture(sptrTexture.get(), true);
 }
