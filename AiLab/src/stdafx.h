@@ -99,9 +99,8 @@
 // Global constants
 namespace app
 {
-	template<typename T>
-	constexpr T pi() { return static_cast<T>(std::acos(-1.0)); }
 	typedef std::chrono::duration<double> seconds;
 	
 	typedef entt::DefaultRegistry Registry;
+	typedef uint32_t Entity;
 }

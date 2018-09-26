@@ -13,7 +13,9 @@ namespace app::utils
 		void update();
 
 		bool isKeyDown(KeyType const & key) const;
+		bool isKeyDown(std::initializer_list<KeyType> const & keys) const;
 		bool isKeyUp(KeyType const & key) const;
+		bool isKeyUp(std::initializer_list<KeyType> const & key) const;
 		bool isKeyPressed(KeyType const & key) const;
 	private:
 		std::map<const KeyType, bool> _keyNowMap;
@@ -56,12 +58,32 @@ namespace app::utils
 	}
 
 	template<typename KeyType>
+	bool app::utils::Keyhandler<KeyType>::isKeyDown(std::initializer_list<KeyType> const & keys) const
+	{
+		for (auto const &[mapKey, mapValue] : _keyNowMap)
+		{
+			if (mapValue && std::find(keys.begin(), keys.end(), mapKey) != keys.end()) { return true; }
+		}
+		return false;
+	}
+
+	template<typename KeyType>
 	bool app::utils::Keyhandler<KeyType>::isKeyUp(KeyType const & key) const
 	{
 		if (auto const & itt = _keyNowMap.find(key); itt != _keyNowMap.end())
 		{
 			auto const &[key, value] = *itt;
 			return !value;
+		}
+		return false;
+	}
+
+	template<typename KeyType>
+	bool app::utils::Keyhandler<KeyType>::isKeyUp(std::initializer_list<KeyType> const & keys) const
+	{
+		for (auto const &[mapKey, mapValue] : _keyNowMap)
+		{
+			if (!mapValue && std::find(keys.begin(), keys.end(), mapKey) != keys.end()) { return true; }
 		}
 		return false;
 	}
