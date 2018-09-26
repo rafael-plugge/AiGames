@@ -108,9 +108,6 @@
     <ClCompile Include="src\factories\EnemyFactory.cpp">
       <Filter>Source Files\factories</Filter>
     </ClCompile>
-    <ClCompile Include="src\utilities\visitors\CreateEntities.cpp">
-      <Filter>Source Files\utilities\visitors</Filter>
-    </ClCompile>
     <ClCompile Include="src\factories\EnemySeekFactory.cpp">
       <Filter>Source Files\factories</Filter>
     </ClCompile>
@@ -125,6 +122,12 @@
     </ClCompile>
     <ClCompile Include="src\utilities\Math.cpp">
       <Filter>Source Files\utilities</Filter>
+    </ClCompile>
+    <ClCompile Include="src\system\AiFleeSystem.cpp">
+      <Filter>Source Files\system</Filter>
+    </ClCompile>
+    <ClCompile Include="src\components\AiFlee.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -188,9 +191,6 @@
     <ClInclude Include="src\factories\EnemyFactory.h">
       <Filter>Header Files\factories</Filter>
     </ClInclude>
-    <ClInclude Include="src\utilities\visitors\CreateEntities.h">
-      <Filter>Header Files\utilities\visitors</Filter>
-    </ClInclude>
     <ClInclude Include="src\factories\EnemySeekFactory.h">
       <Filter>Header Files\factories</Filter>
     </ClInclude>
@@ -205,6 +205,12 @@
     </ClInclude>
     <ClInclude Include="src\utilities\Math.h">
       <Filter>Header Files\utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="src\system\AiFleeSystem.h">
+      <Filter>Header Files\system</Filter>
+    </ClInclude>
+    <ClInclude Include="src\components\AiFlee.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
