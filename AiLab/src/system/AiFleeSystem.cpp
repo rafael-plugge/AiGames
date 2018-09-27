@@ -11,14 +11,14 @@
 app::sys::AiFleeSystem::AiFleeSystem(app::Registry & registry)
 	: BaseSystem(registry)
 	, m_player(0)
-	, m_maxSpeed(0.2f)
 {
 }
 
 void app::sys::AiFleeSystem::player(app::Registry & registry, app::Entity entity)
 {
-	if (!registry.valid(entity)) { throw std::exception("Tried to assign invalid entity in AiFleeSystem::player"); }
-	m_player = entity;
+	m_player = registry.valid(entity)
+		? entity
+		: throw std::exception("Tried to assign invalid entity in AiFleeSystem::player");
 }
 
 void app::sys::AiFleeSystem::update(app::seconds const & dt)
@@ -29,8 +29,7 @@ void app::sys::AiFleeSystem::update(app::seconds const & dt)
 	auto view = m_registry.view<comp::Location, comp::Motion, comp::AiFlee>();
 	view.each([&](app::Entity const & entity, comp::Location & location, comp::Motion & motion, comp::AiFlee & aiFlee)
 	{
-		motion.speed = m_maxSpeed;
-		const auto angle = -app::Math::radToDeg(std::atan2f(-(location.position.x - playerLocation.position.x), location.position.y - playerLocation.position.y));
+		const auto angle = app::Math::radToDeg(std::atan2f(-(playerLocation.position.x - location.position.x), playerLocation.position.y - location.position.y));
 		motion.angularSpeed = app::Math::angleBetween(angle, location.angle) * static_cast<float>(dt.count());
 	});
 }

@@ -1,23 +1,23 @@
-﻿#ifndef _ENEMY_SEEK_FACTORY_H
-#define _ENEMY_SEEK_FACTORY_H
+﻿#ifndef _ENEMY_FLEE_FACTORY_H
+#define _ENEMY_FLEE_FACTORY_H
 
 #include "BaseFactory.h"
 
 namespace app::fact
 {
-	class EnemySeekFactory : public BaseFactory
+	class EnemyFleeFactory : public BaseFactory
 	{
 	public: // Constructors/Destructor/Assignments
-		EnemySeekFactory(app::Registry & registry);
+		EnemyFleeFactory(app::Registry & registry);
 
-		EnemySeekFactory() = delete;
-		EnemySeekFactory(EnemySeekFactory const &) = default;
-		EnemySeekFactory(EnemySeekFactory &&) = default;
+		EnemyFleeFactory() = delete;
+		EnemyFleeFactory(EnemyFleeFactory const &) = default;
+		EnemyFleeFactory(EnemyFleeFactory &&) = default;
 
-		~EnemySeekFactory() = default;
+		~EnemyFleeFactory() = default;
 
-		EnemySeekFactory & operator=(EnemySeekFactory const &) = default;
-		EnemySeekFactory & operator=(EnemySeekFactory &&) = default;
+		EnemyFleeFactory & operator=(EnemyFleeFactory const &) = default;
+		EnemyFleeFactory & operator=(EnemyFleeFactory &&) = default;
 
 	public: // Public Static Functions
 	public: // Public Member Functions
@@ -32,7 +32,8 @@ namespace app::fact
 	private: // Private Member Functions
 	private: // Private Static Variables
 	private: // Private Member Variables
+
 	};
 }
 
-#endif // !_ENEMY_SEEK_FACTORY_H
+#endif // !_ENEMY_FLEE_FACTORY_H

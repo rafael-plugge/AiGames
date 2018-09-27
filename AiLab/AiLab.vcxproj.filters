@@ -127,6 +127,12 @@
       <Filter>Source Files\system</Filter>
     </ClCompile>
     <ClCompile Include="src\components\AiFlee.cpp">
+      <Filter>Source Files\components</Filter>
+    </ClCompile>
+    <ClCompile Include="src\factories\EnemyFleeFactory.cpp">
+      <Filter>Source Files\factories</Filter>
+    </ClCompile>
+    <ClCompile Include="src\system\AiArriveSystem.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -210,6 +216,12 @@
       <Filter>Header Files\system</Filter>
     </ClInclude>
     <ClInclude Include="src\components\AiFlee.h">
+      <Filter>Header Files\components</Filter>
+    </ClInclude>
+    <ClInclude Include="src\factories\EnemyFleeFactory.h">
+      <Filter>Header Files\factories</Filter>
+    </ClInclude>
+    <ClInclude Include="src\system\AiArriveSystem.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

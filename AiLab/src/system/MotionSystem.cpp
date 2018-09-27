@@ -11,8 +11,8 @@ app::sys::MotionSystem::MotionSystem(app::Registry & registry)
 	: BaseSystem(registry)
 	, m_Acceleration(0.3f)
 	, m_AngularAcceleration(0.1f)
-	, m_MaxSpeed(2.0f)
-	, m_MaxAngularSpeed(1.0f)
+	, m_MaxSpeed(10.0f)
+	, m_MaxAngularSpeed(4.0f)
 {
 }
 

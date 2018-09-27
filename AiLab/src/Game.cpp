@@ -8,6 +8,7 @@
 #include "system/RenderSystem.h"
 #include "system/AiWanderSystem.h"
 #include "system/AiSeekSystem.h"
+#include "system/AiFleeSystem.h"
 
 // Components
 #include "components/Location.h"
@@ -21,9 +22,10 @@
 #include "components/Player.h"
 
 // Factories
+#include "factories/PlayerFactory.h"
 #include "factories/EnemyFactory.h"
 #include "factories/EnemySeekFactory.h"
-#include "factories/PlayerFactory.h"
+#include "factories/EnemyFleeFactory.h"
 
 const sf::Color app::Game::s_clearColor = { 0u, 0u, 0u, 255u };
 
@@ -101,6 +103,7 @@ bool app::Game::createSystems()
 	m_updateSystems = {
 		std::make_unique<sys::InputSystem>(sys::InputSystem(m_registry, m_keyHandler)),
 		std::make_unique<sys::AiSeekSystem>(sys::AiSeekSystem(m_registry)),
+		std::make_unique<sys::AiFleeSystem>(sys::AiFleeSystem(m_registry)),
 		std::make_unique<sys::MotionSystem>(sys::MotionSystem(m_registry)),
 		std::make_unique<sys::CollisionSystem>(sys::CollisionSystem(m_registry, m_windowSize))
 	};
@@ -118,7 +121,8 @@ bool app::Game::createEntities()
 		app::fact::PlayerFactory(m_registry).create();
 
 	app::fact::EnemyFactory(m_registry).create();
-	app::fact::EnemySeekFactory(m_registry, player).create();
+	app::fact::EnemySeekFactory(m_registry).create();
+	app::fact::EnemyFleeFactory(m_registry).create();
 
 	return true;
 }
@@ -146,14 +150,14 @@ void app::Game::pollEvents()
 
 void app::Game::update(app::seconds const & dt)
 {
-	std::for_each(m_updateSystems.begin(), m_updateSystems.end(), [&dt](auto & system) { system->update(dt); });
+	std::for_each(m_updateSystems.begin(), m_updateSystems.end(), [&dt](auto const & system) { system->update(dt); });
 }
 
 void app::Game::render()
 {
 	m_window.clear(s_clearColor);
 
-	std::for_each(m_renderSystems.begin(), m_renderSystems.end(), [](auto & system) { system->update(app::seconds::zero()); });
+	std::for_each(m_renderSystems.begin(), m_renderSystems.end(), [](auto const & system) { system->update(app::seconds::zero()); });
 
 	m_window.display();
 }

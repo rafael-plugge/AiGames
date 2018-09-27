@@ -27,7 +27,7 @@ app::Entity app::fact::PlayerFactory::create()
 	m_registry.assign<comp::Location>(entity, std::move(location));
 
 	auto dimensions = comp::Dimensions();
-	dimensions.size = { 100.0f, 100.0f };
+	dimensions.size = { 200.0f, 200.0f };
 	dimensions.origin = dimensions.size / 2.0f;
 	m_registry.assign<comp::Dimensions>(entity, std::move(dimensions));
 

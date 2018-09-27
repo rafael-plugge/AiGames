@@ -34,7 +34,6 @@ namespace app::sys
 	private: // Private Static Variables
 	private: // Private Member Variables
 		app::Entity m_player;
-		const float m_maxSpeed;
 	};
 }
 

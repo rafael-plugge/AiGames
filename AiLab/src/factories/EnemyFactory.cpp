@@ -48,7 +48,7 @@ app::Entity app::fact::EnemyFactory::create(std::string const & filePath)
 
 	auto render = comp::Render();
 	sf::Texture texture;
-	texture.loadFromFile(filePath)
+	(filePath.length() > 0 && texture.loadFromFile(filePath))
 		? render.texture = std::make_shared<sf::Texture>(std::move(texture))
 		: render.texture = sf::Color{ 255u, 0u, 0u, 255u };
 	m_registry.assign<comp::Render>(entity, std::move(render));

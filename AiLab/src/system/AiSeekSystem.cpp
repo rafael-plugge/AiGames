@@ -11,7 +11,6 @@
 app::sys::AiSeekSystem::AiSeekSystem(app::Registry & registry)
 	: BaseSystem(registry)
 	, m_player(0)
-	, m_maxSpeed(0.5f)
 {
 	m_registry.prepare<comp::Location, comp::Motion, comp::AiSeek>();
 	m_registry.construction<comp::Player>(entt::tag_t()).connect<sys::AiSeekSystem, &sys::AiSeekSystem::player>(this);
@@ -31,7 +30,6 @@ void app::sys::AiSeekSystem::update(app::seconds const & dt)
 	auto view = m_registry.view<comp::Location, comp::Motion, comp::AiSeek>(entt::persistent_t());
 	view.each([&](app::Entity const & entity, comp::Location & location, comp::Motion & motion, comp::AiSeek & aiSeek)
 	{
-		motion.speed = m_maxSpeed;
 		const auto angle = app::Math::radToDeg(std::atan2f(-(location.position.x - playerLocation.position.x), location.position.y - playerLocation.position.y));
 		motion.angularSpeed = app::Math::angleBetween(angle, location.angle) * static_cast<float>(dt.count());
 	});
