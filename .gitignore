@@ -259,3 +259,10 @@ paket-files/
 # Python Tools for Visual Studio (PTVS)
 __pycache__/
 *.pyc
+
+# exclusions
+!**/deps/bin
+!**/deps/bin/debug
+!**/deps/bin/release
+!**/deps/lib/debug
+!**/deps/lib/release
