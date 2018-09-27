@@ -10,22 +10,28 @@
 
 app::sys::AiSeekSystem::AiSeekSystem(app::Registry & registry)
 	: BaseSystem(registry)
-	, m_player(0)
+	, m_player()
 {
 	m_registry.prepare<comp::Location, comp::Motion, comp::AiSeek>();
 	m_registry.construction<comp::Player>(entt::tag_t()).connect<sys::AiSeekSystem, &sys::AiSeekSystem::player>(this);
 }
 
+app::sys::AiSeekSystem::~AiSeekSystem()
+{
+	m_registry.construction<comp::Player>(entt::tag_t()).disconnect<sys::AiSeekSystem, &sys::AiSeekSystem::player>(this);
+}
+
 void app::sys::AiSeekSystem::player(app::Registry & registry, app::Entity entity)
 {
-	if (!registry.valid(entity)) { throw std::exception("Tried to assign invalid entity in AiSeekSystem::player"); }
-	m_player = entity;
+	m_player = registry.valid(entity)
+		? entity
+		: throw std::exception("Tried to assign invalid entity in AiSeekSystem::player");
 }
 
 void app::sys::AiSeekSystem::update(app::seconds const & dt)
 {
-	if (!m_registry.valid(m_player)) { return; }
-	auto [playerLocation, playerMotion] = m_registry.get<comp::Location, comp::Motion>(m_player);
+	if (!m_player.has_value() || !m_registry.valid(m_player.value())) { return; }
+	auto [playerLocation, playerMotion] = m_registry.get<comp::Location, comp::Motion>(m_player.value());
 
 	auto view = m_registry.view<comp::Location, comp::Motion, comp::AiSeek>(entt::persistent_t());
 	view.each([&](app::Entity const & entity, comp::Location & location, comp::Motion & motion, comp::AiSeek & aiSeek)

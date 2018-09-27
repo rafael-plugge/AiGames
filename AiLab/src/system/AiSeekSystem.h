@@ -14,7 +14,7 @@ namespace app::sys
 		AiSeekSystem(AiSeekSystem const &) = default;
 		AiSeekSystem(AiSeekSystem &&) = default;
 
-		~AiSeekSystem() = default;
+		~AiSeekSystem();
 
 		AiSeekSystem & operator=(AiSeekSystem const &) = default;
 		AiSeekSystem & operator=(AiSeekSystem &&) = default;
@@ -33,7 +33,7 @@ namespace app::sys
 	private: // Private Member Functions
 	private: // Private Static Variables
 	private: // Private Member Variables
-		app::Entity m_player;
+		std::optional<app::Entity> m_player;
 	};
 }
 

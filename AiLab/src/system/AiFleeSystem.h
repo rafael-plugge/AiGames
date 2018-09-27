@@ -14,7 +14,7 @@ namespace app::sys
 		AiFleeSystem(AiFleeSystem const &) = default;
 		AiFleeSystem(AiFleeSystem &&) = default;
 
-		~AiFleeSystem() = default;
+		~AiFleeSystem();
 
 		AiFleeSystem & operator=(AiFleeSystem const &) = default;
 		AiFleeSystem & operator=(AiFleeSystem &&) = default;
@@ -33,7 +33,7 @@ namespace app::sys
 	private: // Private Member Functions
 	private: // Private Static Variables
 	private: // Private Member Variables
-		app::Entity m_player;
+		std::optional<app::Entity> m_player;
 	};
 }
 

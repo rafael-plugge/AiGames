@@ -139,6 +139,7 @@ C:\windows\system32\xcopy /Y "$(ProjectDir)deps\bin\debug\*.pdg" "$(TargetDir)"<
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\components\AiArrive.cpp" />
     <ClCompile Include="src\components\AiFlee.cpp" />
     <ClCompile Include="src\components\AiSeek.cpp" />
     <ClCompile Include="src\components\AiWander.cpp" />
@@ -150,6 +151,7 @@ C:\windows\system32\xcopy /Y "$(ProjectDir)deps\bin\debug\*.pdg" "$(TargetDir)"<
     <ClCompile Include="src\components\Render.cpp" />
     <ClCompile Include="src\components\Dimensions.cpp" />
     <ClCompile Include="src\factories\BaseFactory.cpp" />
+    <ClCompile Include="src\factories\EnemyArriveFactory.cpp" />
     <ClCompile Include="src\factories\EnemyFactory.cpp" />
     <ClCompile Include="src\factories\EnemyFleeFactory.cpp" />
     <ClCompile Include="src\factories\EnemySeekFactory.cpp" />
@@ -174,6 +176,7 @@ C:\windows\system32\xcopy /Y "$(ProjectDir)deps\bin\debug\*.pdg" "$(TargetDir)"<
     <ClCompile Include="src\utilities\visitors\RenderVisitor.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\components\AiArrive.h" />
     <ClInclude Include="src\components\AiFlee.h" />
     <ClInclude Include="src\components\AiSeek.h" />
     <ClInclude Include="src\components\AiWander.h" />
@@ -185,6 +188,7 @@ C:\windows\system32\xcopy /Y "$(ProjectDir)deps\bin\debug\*.pdg" "$(TargetDir)"<
     <ClInclude Include="src\components\Render.h" />
     <ClInclude Include="src\components\Dimensions.h" />
     <ClInclude Include="src\factories\BaseFactory.h" />
+    <ClInclude Include="src\factories\EnemyArriveFactory.h" />
     <ClInclude Include="src\factories\EnemyFactory.h" />
     <ClInclude Include="src\factories\EnemyFleeFactory.h" />
     <ClInclude Include="src\factories\EnemySeekFactory.h" />

@@ -14,13 +14,14 @@ namespace app::sys
 		AiArriveSystem(AiArriveSystem const &) = default;
 		AiArriveSystem(AiArriveSystem &&) = default;
 
-		~AiArriveSystem() = default;
+		~AiArriveSystem();
 
 		AiArriveSystem & operator=(AiArriveSystem const &) = default;
 		AiArriveSystem & operator=(AiArriveSystem &&) = default;
 
 	public: // Public Static Functions
 	public: // Public Member Functions
+		void player(app::Registry & registry, app::Entity entity);
 		virtual void update(app::seconds const & dt) override;
 	public: // Public Static Variables
 	public: // Public Member Variables
@@ -32,7 +33,8 @@ namespace app::sys
 	private: // Private Member Functions
 	private: // Private Static Variables
 	private: // Private Member Variables
-
+		std::optional<app::Entity> m_player;
+		float const m_minimumSpeed;
 	};
 }
 

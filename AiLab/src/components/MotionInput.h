@@ -4,9 +4,9 @@ namespace app::comp
 {
 	struct MotionInput
 	{
-		bool increaseSpeed;
-		bool decreaseSpeed;
-		bool rotateLeft;
-		bool rotateRight;
+		bool increaseSpeed = false;
+		bool decreaseSpeed = false;
+		bool rotateLeft = false;
+		bool rotateRight = false;
 	};
 }

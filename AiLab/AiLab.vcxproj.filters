@@ -133,7 +133,13 @@
       <Filter>Source Files\factories</Filter>
     </ClCompile>
     <ClCompile Include="src\system\AiArriveSystem.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\system</Filter>
+    </ClCompile>
+    <ClCompile Include="src\components\AiArrive.cpp">
+      <Filter>Source Files\components</Filter>
+    </ClCompile>
+    <ClCompile Include="src\factories\EnemyArriveFactory.cpp">
+      <Filter>Source Files\factories</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -222,7 +228,13 @@
       <Filter>Header Files\factories</Filter>
     </ClInclude>
     <ClInclude Include="src\system\AiArriveSystem.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\system</Filter>
+    </ClInclude>
+    <ClInclude Include="src\factories\EnemyArriveFactory.h">
+      <Filter>Header Files\factories</Filter>
+    </ClInclude>
+    <ClInclude Include="src\components\AiArrive.h">
+      <Filter>Header Files\components</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

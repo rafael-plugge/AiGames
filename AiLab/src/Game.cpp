@@ -9,6 +9,7 @@
 #include "system/AiWanderSystem.h"
 #include "system/AiSeekSystem.h"
 #include "system/AiFleeSystem.h"
+#include "system/AiArriveSystem.h"
 
 // Components
 #include "components/Location.h"
@@ -26,6 +27,7 @@
 #include "factories/EnemyFactory.h"
 #include "factories/EnemySeekFactory.h"
 #include "factories/EnemyFleeFactory.h"
+#include "factories/EnemyArriveFactory.h"
 
 const sf::Color app::Game::s_clearColor = { 0u, 0u, 0u, 255u };
 
@@ -47,7 +49,7 @@ int app::Game::run()
 	clock::time_point deltaTimePoint = clock::now();
 	clock::duration elapsedTime = clock::duration::zero();
 
-	if (bool success = this->init(); !success) { return EXIT_FAILURE; }
+	if (!init()) { return EXIT_FAILURE; }
 
 	while (m_gameLoop)
 	{
@@ -101,11 +103,12 @@ bool app::Game::createCompDependencies()
 bool app::Game::createSystems()
 {
 	m_updateSystems = {
-		std::make_unique<sys::InputSystem>(sys::InputSystem(m_registry, m_keyHandler)),
-		std::make_unique<sys::AiSeekSystem>(sys::AiSeekSystem(m_registry)),
-		std::make_unique<sys::AiFleeSystem>(sys::AiFleeSystem(m_registry)),
-		std::make_unique<sys::MotionSystem>(sys::MotionSystem(m_registry)),
-		std::make_unique<sys::CollisionSystem>(sys::CollisionSystem(m_registry, m_windowSize))
+		std::make_unique<sys::InputSystem>(m_registry, m_keyHandler),
+		std::make_unique<sys::AiSeekSystem>(m_registry),
+		std::make_unique<sys::AiFleeSystem>(m_registry),
+		std::make_unique<sys::AiArriveSystem>(m_registry),
+		std::make_unique<sys::MotionSystem>(m_registry),
+		std::make_unique<sys::CollisionSystem>(m_registry, m_windowSize)
 	};
 
 	m_renderSystems = {
@@ -123,6 +126,7 @@ bool app::Game::createEntities()
 	app::fact::EnemyFactory(m_registry).create();
 	app::fact::EnemySeekFactory(m_registry).create();
 	app::fact::EnemyFleeFactory(m_registry).create();
+	app::fact::EnemyArriveFactory(m_registry).create();
 
 	return true;
 }
