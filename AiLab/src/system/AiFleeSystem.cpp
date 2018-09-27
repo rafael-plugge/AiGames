@@ -24,7 +24,7 @@ app::sys::AiFleeSystem::~AiFleeSystem()
 void app::sys::AiFleeSystem::player(app::Registry & registry, app::Entity entity)
 {
 	m_player = registry.valid(entity)
-		? m_player.emplace(entity)
+		? entity
 		: throw std::exception("Tried to assign invalid entity in AiFleeSystem::player");
 }
 

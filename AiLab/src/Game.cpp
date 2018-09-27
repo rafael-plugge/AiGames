@@ -6,10 +6,10 @@
 #include "system/InputSystem.h"
 #include "system/CollisionSystem.h"
 #include "system/RenderSystem.h"
-#include "system/AiWanderSystem.h"
 #include "system/AiSeekSystem.h"
 #include "system/AiFleeSystem.h"
 #include "system/AiArriveSystem.h"
+#include "system/AiWanderSystem.h"
 
 // Components
 #include "components/Location.h"
@@ -18,9 +18,6 @@
 #include "components/MotionInput.h"
 #include "components/Dimensions.h"
 #include "components/Collision.h"
-#include "components/AiWander.h"
-#include "components/AiSeek.h"
-#include "components/Player.h"
 
 // Factories
 #include "factories/PlayerFactory.h"
@@ -28,6 +25,7 @@
 #include "factories/EnemySeekFactory.h"
 #include "factories/EnemyFleeFactory.h"
 #include "factories/EnemyArriveFactory.h"
+#include "factories/EnemyWanderFactory.h"
 
 const sf::Color app::Game::s_clearColor = { 0u, 0u, 0u, 255u };
 
@@ -107,12 +105,13 @@ bool app::Game::createSystems()
 		std::make_unique<sys::AiSeekSystem>(m_registry),
 		std::make_unique<sys::AiFleeSystem>(m_registry),
 		std::make_unique<sys::AiArriveSystem>(m_registry),
+		std::make_unique<sys::AiWanderSystem>(m_registry),
 		std::make_unique<sys::MotionSystem>(m_registry),
 		std::make_unique<sys::CollisionSystem>(m_registry, m_windowSize)
 	};
 
 	m_renderSystems = {
-		std::make_unique<sys::RenderSystem>(sys::RenderSystem(m_registry, m_window))
+		std::make_unique<sys::RenderSystem>(m_registry, m_window)
 	};
 
 	return true;
@@ -127,6 +126,7 @@ bool app::Game::createEntities()
 	app::fact::EnemySeekFactory(m_registry).create();
 	app::fact::EnemyFleeFactory(m_registry).create();
 	app::fact::EnemyArriveFactory(m_registry).create();
+	app::fact::EnemyWanderFactory(m_registry).create();
 
 	return true;
 }

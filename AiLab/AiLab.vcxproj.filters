@@ -141,6 +141,9 @@
     <ClCompile Include="src\factories\EnemyArriveFactory.cpp">
       <Filter>Source Files\factories</Filter>
     </ClCompile>
+    <ClCompile Include="src\factories\EnemyWanderFactory.cpp">
+      <Filter>Source Files\factories</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\stdafx.h">
@@ -235,6 +238,9 @@
     </ClInclude>
     <ClInclude Include="src\components\AiArrive.h">
       <Filter>Header Files\components</Filter>
+    </ClInclude>
+    <ClInclude Include="src\factories\EnemyWanderFactory.h">
+      <Filter>Header Files\factories</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -155,6 +155,7 @@ C:\windows\system32\xcopy /Y "$(ProjectDir)deps\bin\debug\*.pdg" "$(TargetDir)"<
     <ClCompile Include="src\factories\EnemyFactory.cpp" />
     <ClCompile Include="src\factories\EnemyFleeFactory.cpp" />
     <ClCompile Include="src\factories\EnemySeekFactory.cpp" />
+    <ClCompile Include="src\factories\EnemyWanderFactory.cpp" />
     <ClCompile Include="src\factories\PlayerFactory.cpp" />
     <ClCompile Include="src\Game.cpp" />
     <ClCompile Include="src\main.cpp" />
@@ -192,6 +193,7 @@ C:\windows\system32\xcopy /Y "$(ProjectDir)deps\bin\debug\*.pdg" "$(TargetDir)"<
     <ClInclude Include="src\factories\EnemyFactory.h" />
     <ClInclude Include="src\factories\EnemyFleeFactory.h" />
     <ClInclude Include="src\factories\EnemySeekFactory.h" />
+    <ClInclude Include="src\factories\EnemyWanderFactory.h" />
     <ClInclude Include="src\factories\PlayerFactory.h" />
     <ClInclude Include="src\Game.h" />
     <ClInclude Include="src\stdafx.h" />

@@ -19,6 +19,7 @@ namespace app::comp
 	public: // Public Member Functions
 	public: // Public Static Variables
 	public: // Public Member Variables
+		float maxMeander;
 	protected: // Protected Static Functions
 	protected: // Protected Member Functions
 	protected: // Protected Static Variables
@@ -27,7 +28,6 @@ namespace app::comp
 	private: // Private Member Functions
 	private: // Private Static Variables
 	private: // Private Member Variables
-		app::Entity player;
 	};
 }
 

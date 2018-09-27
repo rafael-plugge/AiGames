@@ -1,21 +1,53 @@
 ﻿#include "stdafx.h"
 #include "AiWanderSystem.h"
 
+#include "components/Player.h"
 #include "components/Location.h"
-#include "components/Dimensions.h"
+#include "components/Motion.h"
 #include "components/Collision.h"
 #include "components/AiWander.h"
 
+#include "utilities/Math.h"
+
 app::sys::AiWanderSystem::AiWanderSystem(app::Registry & registry)
 	: BaseSystem(registry)
+	, m_randomEngine()
+	, m_distribution(0.0f, 100.0f)
+	, m_swapTracker(app::seconds::zero())
 {
-	m_registry.prepare<comp::Location, comp::Dimensions, comp::Collision, comp::AiWander>();
+	m_registry.construction<comp::Player>(entt::tag_t()).connect<sys::AiWanderSystem, &sys::AiWanderSystem::player>(this);
+}
+
+app::sys::AiWanderSystem::~AiWanderSystem()
+{
+	m_registry.construction<comp::Player>(entt::tag_t()).disconnect<sys::AiWanderSystem, &sys::AiWanderSystem::player>(this);
+}
+
+void app::sys::AiWanderSystem::player(app::Registry & registry, app::Entity entity)
+{
+	m_player = registry.valid(entity)
+		? entity
+		: throw std::exception("Tried to assign invalid entity in AiSeekSystem::player");
 }
 
 void app::sys::AiWanderSystem::update(app::seconds const & dt)
 {
-	auto view = m_registry.view<comp::Location, comp::Dimensions, comp::Collision, comp::AiWander>(entt::persistent_t());
-	view.each([&dt](app::Entity const & entity, comp::Location & location, comp::Dimensions & dimensions, comp::Collision & collisions, comp::AiWander & aiWander)
+	if (!m_player.has_value() || !m_registry.valid(m_player.value())) { return; }
+	auto[playerLocation, playerMotion] = m_registry.get<comp::Location, comp::Motion>(m_player.value());
+
+	m_swapTracker += dt;
+	if (m_swapTracker > app::seconds(10.0f)) { m_flipDirections = !m_flipDirections; }
+
+	auto view = m_registry.view<comp::Location, comp::Motion, comp::AiWander>();
+	view.each([&](app::Entity const & entity, comp::Location & location, comp::Motion & motion, comp::AiWander & aiWander)
 	{
+		const auto angle = app::Math::radToDeg(std::atan2f(-(location.position.x - playerLocation.position.x), location.position.y - playerLocation.position.y));
+		const auto deltaAngle = app::Math::angleBetween(angle, location.angle) * static_cast<float>(dt.count());
+		motion.angularSpeed = deltaAngle + (aiWander.maxMeander * generateRandomPercentage() * (m_flipDirections ? 1.0f : -1.0f));
 	});
+}
+
+float app::sys::AiWanderSystem::generateRandomPercentage()
+{
+	return m_distribution(m_randomEngine) / 100.0f;
 }
