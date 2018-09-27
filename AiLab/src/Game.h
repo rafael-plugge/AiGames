@@ -14,8 +14,8 @@ namespace app
 	private:
 		bool init();
 		bool createCompDependencies();
-		bool createEntities();
 		bool createSystems();
+		bool createEntities();
 
 		void pollEvents();
 		void update(app::seconds const & dt);
@@ -36,8 +36,8 @@ namespace app
 
 		// Entity Component System
 		entt::DefaultRegistry m_registry;
-		std::vector<std::unique_ptr<sys::BaseSystem>> m_updateSystems;
-		std::vector<std::unique_ptr<sys::BaseSystem>> m_renderSystems;
+		std::array<std::unique_ptr<sys::BaseSystem>, 4> m_updateSystems;
+		std::array<std::unique_ptr<sys::BaseSystem>, 1> m_renderSystems;
 
 	private: // static variables
 		static const sf::Color s_clearColor;

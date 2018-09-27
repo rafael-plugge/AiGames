@@ -13,12 +13,6 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
-    <Filter Include="Header Files\entities">
-      <UniqueIdentifier>{ade7630b-bd43-4763-a866-45d7918a6bba}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\entities">
-      <UniqueIdentifier>{56a22706-52cc-4e58-861f-48ac6cd6ff84}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source Files\system">
       <UniqueIdentifier>{4894b9a4-0ced-4047-bf6d-5428ff22fdd3}</UniqueIdentifier>
     </Filter>
@@ -43,6 +37,12 @@
     <Filter Include="Header Files\utilities\visitors">
       <UniqueIdentifier>{c454fa50-6235-4a05-89f1-db7474680306}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\factories">
+      <UniqueIdentifier>{08f4802d-49b5-4499-90e5-34adb0f2932b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\factories">
+      <UniqueIdentifier>{d75352fa-cd54-4f7d-b840-48b6ae6f5418}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\main.cpp">
@@ -53,12 +53,6 @@
     </ClCompile>
     <ClCompile Include="src\Game.cpp">
       <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\entities\Player.cpp">
-      <Filter>Source Files\entities</Filter>
-    </ClCompile>
-    <ClCompile Include="src\entities\Enemy.cpp">
-      <Filter>Source Files\entities</Filter>
     </ClCompile>
     <ClCompile Include="src\utilities\Keyhandler.cpp">
       <Filter>Source Files\utilities</Filter>
@@ -99,6 +93,42 @@
     <ClCompile Include="src\utilities\visitors\RenderVisitor.cpp">
       <Filter>Source Files\utilities\visitors</Filter>
     </ClCompile>
+    <ClCompile Include="src\components\AiWander.cpp">
+      <Filter>Source Files\components</Filter>
+    </ClCompile>
+    <ClCompile Include="src\system\AiWanderSystem.cpp">
+      <Filter>Source Files\system</Filter>
+    </ClCompile>
+    <ClCompile Include="src\factories\BaseFactory.cpp">
+      <Filter>Source Files\factories</Filter>
+    </ClCompile>
+    <ClCompile Include="src\factories\PlayerFactory.cpp">
+      <Filter>Source Files\factories</Filter>
+    </ClCompile>
+    <ClCompile Include="src\factories\EnemyFactory.cpp">
+      <Filter>Source Files\factories</Filter>
+    </ClCompile>
+    <ClCompile Include="src\factories\EnemySeekFactory.cpp">
+      <Filter>Source Files\factories</Filter>
+    </ClCompile>
+    <ClCompile Include="src\components\AiSeek.cpp">
+      <Filter>Source Files\components</Filter>
+    </ClCompile>
+    <ClCompile Include="src\system\AiSeekSystem.cpp">
+      <Filter>Source Files\system</Filter>
+    </ClCompile>
+    <ClCompile Include="src\components\Player.cpp">
+      <Filter>Source Files\components</Filter>
+    </ClCompile>
+    <ClCompile Include="src\utilities\Math.cpp">
+      <Filter>Source Files\utilities</Filter>
+    </ClCompile>
+    <ClCompile Include="src\system\AiFleeSystem.cpp">
+      <Filter>Source Files\system</Filter>
+    </ClCompile>
+    <ClCompile Include="src\components\AiFlee.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\stdafx.h">
@@ -106,12 +136,6 @@
     </ClInclude>
     <ClInclude Include="src\Game.h">
       <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\entities\Enemy.h">
-      <Filter>Header Files\entities</Filter>
-    </ClInclude>
-    <ClInclude Include="src\entities\Player.h">
-      <Filter>Header Files\entities</Filter>
     </ClInclude>
     <ClInclude Include="src\utilities\Keyhandler.h">
       <Filter>Header Files\utilities</Filter>
@@ -151,6 +175,42 @@
     </ClInclude>
     <ClInclude Include="src\utilities\visitors\RenderVisitor.h">
       <Filter>Header Files\utilities\visitors</Filter>
+    </ClInclude>
+    <ClInclude Include="src\components\AiWander.h">
+      <Filter>Header Files\components</Filter>
+    </ClInclude>
+    <ClInclude Include="src\system\AiWanderSystem.h">
+      <Filter>Header Files\system</Filter>
+    </ClInclude>
+    <ClInclude Include="src\factories\BaseFactory.h">
+      <Filter>Header Files\factories</Filter>
+    </ClInclude>
+    <ClInclude Include="src\factories\PlayerFactory.h">
+      <Filter>Header Files\factories</Filter>
+    </ClInclude>
+    <ClInclude Include="src\factories\EnemyFactory.h">
+      <Filter>Header Files\factories</Filter>
+    </ClInclude>
+    <ClInclude Include="src\factories\EnemySeekFactory.h">
+      <Filter>Header Files\factories</Filter>
+    </ClInclude>
+    <ClInclude Include="src\components\AiSeek.h">
+      <Filter>Header Files\components</Filter>
+    </ClInclude>
+    <ClInclude Include="src\system\AiSeekSystem.h">
+      <Filter>Header Files\system</Filter>
+    </ClInclude>
+    <ClInclude Include="src\components\Player.h">
+      <Filter>Header Files\components</Filter>
+    </ClInclude>
+    <ClInclude Include="src\utilities\Math.h">
+      <Filter>Header Files\utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="src\system\AiFleeSystem.h">
+      <Filter>Header Files\system</Filter>
+    </ClInclude>
+    <ClInclude Include="src\components\AiFlee.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

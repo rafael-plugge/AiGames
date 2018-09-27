@@ -1,8 +1,11 @@
 ﻿#include "stdafx.h"
 #include "MotionSystem.h"
+
 #include "components/Location.h"
 #include "components/Motion.h"
 #include "components/MotionInput.h"
+
+#include "utilities/Math.h"
 
 app::sys::MotionSystem::MotionSystem(app::Registry & registry)
 	: BaseSystem(registry)
@@ -34,7 +37,9 @@ void app::sys::MotionSystem::update(app::seconds const & dt)
 		//if (motion.angularSpeed > m_MaxAngularSpeed) { motion.angularSpeed = m_MaxAngularSpeed; }
 		//if (motion.angularSpeed < -m_MaxAngularSpeed) { motion.angularSpeed = -m_MaxAngularSpeed; }
 		location.angle += motion.angularSpeed;
-		auto const angleRad = location.angle * (app::pi<float>() / 180.0f);
-		location.position += sf::Vector2f{ std::sinf(angleRad), -std::cosf(angleRad) } * motion.speed;
+		while (location.angle > 360.0f) { location.angle -= 360.0f; }
+		while (location.angle < -360.0f) { location.angle += 360.0f; }
+		auto const angleRad = app::Math::degToRad(location.angle);
+		location.position += sf::Vector2f{ std::sin(angleRad), -std::cos(angleRad) } * motion.speed;
 	});
 }

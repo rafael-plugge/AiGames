@@ -6,6 +6,8 @@
 #include "system/InputSystem.h"
 #include "system/CollisionSystem.h"
 #include "system/RenderSystem.h"
+#include "system/AiWanderSystem.h"
+#include "system/AiSeekSystem.h"
 
 // Components
 #include "components/Location.h"
@@ -14,10 +16,14 @@
 #include "components/MotionInput.h"
 #include "components/Dimensions.h"
 #include "components/Collision.h"
+#include "components/AiWander.h"
+#include "components/AiSeek.h"
+#include "components/Player.h"
 
-// Entities
-#include "entities/Player.h"
-#include "entities/Enemy.h"
+// Factories
+#include "factories/EnemyFactory.h"
+#include "factories/EnemySeekFactory.h"
+#include "factories/PlayerFactory.h"
 
 const sf::Color app::Game::s_clearColor = { 0u, 0u, 0u, 255u };
 
@@ -92,29 +98,27 @@ bool app::Game::createCompDependencies()
 
 bool app::Game::createSystems()
 {
-	std::unique_ptr<sys::BaseSystem> uptrSystem = nullptr;
-	m_updateSystems.reserve(3);
-	m_renderSystems.reserve(1);
-	
-	uptrSystem = std::make_unique<sys::InputSystem>(sys::InputSystem(m_registry, m_keyHandler));
-	m_updateSystems.push_back(std::move(uptrSystem));
+	m_updateSystems = {
+		std::make_unique<sys::InputSystem>(sys::InputSystem(m_registry, m_keyHandler)),
+		std::make_unique<sys::AiSeekSystem>(sys::AiSeekSystem(m_registry)),
+		std::make_unique<sys::MotionSystem>(sys::MotionSystem(m_registry)),
+		std::make_unique<sys::CollisionSystem>(sys::CollisionSystem(m_registry, m_windowSize))
+	};
 
-	uptrSystem = std::make_unique<sys::MotionSystem>(sys::MotionSystem(m_registry));
-	m_updateSystems.push_back(std::move(uptrSystem));
-
-	uptrSystem = std::make_unique<sys::CollisionSystem>(sys::CollisionSystem(m_registry, m_windowSize));
-	m_updateSystems.push_back(std::move(uptrSystem));
-
-	uptrSystem = std::make_unique<sys::RenderSystem>(sys::RenderSystem(m_registry, m_window));
-	m_renderSystems.push_back(std::move(uptrSystem));
+	m_renderSystems = {
+		std::make_unique<sys::RenderSystem>(sys::RenderSystem(m_registry, m_window))
+	};
 
 	return true;
 }
 
 bool app::Game::createEntities()
 {
-	ent::Player::create(m_registry);
-	ent::Enemy::create(m_registry);
+	app::Entity const player = 
+		app::fact::PlayerFactory(m_registry).create();
+
+	app::fact::EnemyFactory(m_registry).create();
+	app::fact::EnemySeekFactory(m_registry, player).create();
 
 	return true;
 }
@@ -142,20 +146,14 @@ void app::Game::pollEvents()
 
 void app::Game::update(app::seconds const & dt)
 {
-	for (auto & system : m_updateSystems)
-	{
-		system->update(dt);
-	}
+	std::for_each(m_updateSystems.begin(), m_updateSystems.end(), [&dt](auto & system) { system->update(dt); });
 }
 
 void app::Game::render()
 {
 	m_window.clear(s_clearColor);
 
-	for (auto & system : m_renderSystems)
-	{
-		system->update(app::seconds::zero());
-	}
+	std::for_each(m_renderSystems.begin(), m_renderSystems.end(), [](auto & system) { system->update(app::seconds::zero()); });
 
 	m_window.display();
 }
