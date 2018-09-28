@@ -34,10 +34,13 @@ namespace app::sys
 		float generateRandomPercentage();
 	private: // Private Static Variables
 	private: // Private Member Variables
+		float const m_maxOffset;
+		float const m_minOffset;
+		float const m_stepOffset;
 		std::default_random_engine m_randomEngine;
 		std::uniform_real_distribution<float> m_distribution;
-		app::seconds m_swapTracker;
-		bool m_flipDirections;
+		float m_offset;
+		bool m_increase;
 		std::optional<app::Entity> m_player;
 	};
 }

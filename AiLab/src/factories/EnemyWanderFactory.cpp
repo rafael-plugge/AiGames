@@ -42,7 +42,7 @@ app::Entity app::fact::EnemyWanderFactory::create()
 	m_registry.assign<comp::Render>(entity, std::move(render));
 
 	auto aiWander = comp::AiWander();
-	aiWander.maxMeander = 2.0f;
+	aiWander.maxMeander = 0.8f;
 	m_registry.assign<comp::AiWander>(entity, std::move(aiWander));
 
 	return entity;

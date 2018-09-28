@@ -30,6 +30,12 @@ namespace app
 		static constexpr T angleBetweenRad(T const & left, T const & right) { return std::atan2(std::sin(left - right), std::cos(left - right)); }
 		template<typename T>
 		static constexpr T angleBetween(T const & left, T const & right) { return radToDeg(angleBetweenRad(degToRad(left), degToRad(right))); }
+		template<typename T>
+		static constexpr T max(T const & num, T const & maxNum) { return num > maxNum ? maxNum : num; }
+		template<typename T>
+		static constexpr T min(T const & num, T const & minNum) { return num < minNum ? minNum : num; }
+		template<typename T>
+		static constexpr T cap(T const & num, T const & maxNum, T const & minNum) { return min<T>(max<T>(num, maxNum), minNum); }
 	public: // Public Member Functions
 	public: // Public Static Variables
 	public: // Public Member Variables

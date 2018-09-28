@@ -48,7 +48,6 @@ int app::Game::run()
 	clock::duration elapsedTime = clock::duration::zero();
 
 	if (!init()) { return EXIT_FAILURE; }
-
 	while (m_gameLoop)
 	{
 		this->pollEvents();
@@ -61,7 +60,6 @@ int app::Game::run()
 		}
 		this->render();
 	}
-
 	m_window.close();
 	return EXIT_SUCCESS;
 }
