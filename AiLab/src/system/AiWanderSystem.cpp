@@ -50,6 +50,8 @@ void app::sys::AiWanderSystem::update(app::seconds const & dt)
 		motion.angularSpeed = deltaAngle + (aiWander.maxMeander * m_offset);
 		// Cap turning speed
 		//motion.angularSpeed = app::Math::cap(deltaAngle, aiWander.maxMeander, -aiWander.maxMeander);
+		// Wander with jitteriness
+		//motion.angularSpeed = deltaAngle + (aiWander.maxMeander * generateRandomPercentage());
 	});
 }
 
