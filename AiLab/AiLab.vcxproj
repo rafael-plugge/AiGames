@@ -145,6 +145,7 @@ C:\windows\system32\xcopy /Y "$(ProjectDir)deps\bin\debug\*.pdg" "$(TargetDir)"<
     <ClCompile Include="src\components\AiSeek.cpp" />
     <ClCompile Include="src\components\AiWander.cpp" />
     <ClCompile Include="src\components\Collision.cpp" />
+    <ClCompile Include="src\components\Label.cpp" />
     <ClCompile Include="src\components\Motion.cpp" />
     <ClCompile Include="src\components\Location.cpp" />
     <ClCompile Include="src\components\MotionInput.cpp" />
@@ -186,6 +187,7 @@ C:\windows\system32\xcopy /Y "$(ProjectDir)deps\bin\debug\*.pdg" "$(TargetDir)"<
     <ClInclude Include="src\components\AiSeek.h" />
     <ClInclude Include="src\components\AiWander.h" />
     <ClInclude Include="src\components\Collision.h" />
+    <ClInclude Include="src\components\Label.h" />
     <ClInclude Include="src\components\Motion.h" />
     <ClInclude Include="src\components\Location.h" />
     <ClInclude Include="src\components\MotionInput.h" />

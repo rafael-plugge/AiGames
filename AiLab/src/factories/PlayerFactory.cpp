@@ -9,6 +9,7 @@
 #include "components/MotionInput.h"
 #include "components/Collision.h"
 #include "components/Render.h"
+#include "components/Label.h"
 
 app::fact::PlayerFactory::PlayerFactory(app::Registry & registry)
 	: BaseFactory(registry)
@@ -45,6 +46,10 @@ app::Entity app::fact::PlayerFactory::create()
 	if (texture->loadFromFile("./assets/spaceship.png")) { render.texture = texture; }
 	else { render.texture = sf::Color{ 0u, 0u, 255u, 255u }; }
 	m_registry.assign<comp::Render>(entity, std::move(render));
+
+	auto label = comp::Label();
+	std::shared_ptr<sf::Font> font = std::make_shared<sf::Font>();
+	if (font->loadFromFile("")) { label.font = font; }
 
 	return entity;
 }
