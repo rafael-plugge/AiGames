@@ -36,7 +36,7 @@ namespace app
 
 		// Entity Component System
 		entt::DefaultRegistry m_registry;
-		std::array<std::unique_ptr<sys::BaseSystem>, 7> m_updateSystems;
+		std::array<std::unique_ptr<sys::BaseSystem>, 8> m_updateSystems;
 		std::array<std::unique_ptr<sys::BaseSystem>, 1> m_renderSystems;
 
 	private: // static variables

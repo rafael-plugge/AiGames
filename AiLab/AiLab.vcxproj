@@ -141,6 +141,7 @@ C:\windows\system32\xcopy /Y "$(ProjectDir)deps\bin\debug\*.pdg" "$(TargetDir)"<
   <ItemGroup>
     <ClCompile Include="src\components\AiArrive.cpp" />
     <ClCompile Include="src\components\AiFlee.cpp" />
+    <ClCompile Include="src\components\AiPursue.cpp" />
     <ClCompile Include="src\components\AiSeek.cpp" />
     <ClCompile Include="src\components\AiWander.cpp" />
     <ClCompile Include="src\components\Collision.cpp" />
@@ -154,6 +155,7 @@ C:\windows\system32\xcopy /Y "$(ProjectDir)deps\bin\debug\*.pdg" "$(TargetDir)"<
     <ClCompile Include="src\factories\EnemyArriveFactory.cpp" />
     <ClCompile Include="src\factories\EnemyFactory.cpp" />
     <ClCompile Include="src\factories\EnemyFleeFactory.cpp" />
+    <ClCompile Include="src\factories\EnemyPursueFactory.cpp" />
     <ClCompile Include="src\factories\EnemySeekFactory.cpp" />
     <ClCompile Include="src\factories\EnemyWanderFactory.cpp" />
     <ClCompile Include="src\factories\PlayerFactory.cpp" />
@@ -165,6 +167,7 @@ C:\windows\system32\xcopy /Y "$(ProjectDir)deps\bin\debug\*.pdg" "$(TargetDir)"<
     </ClCompile>
     <ClCompile Include="src\system\AiArriveSystem.cpp" />
     <ClCompile Include="src\system\AiFleeSystem.cpp" />
+    <ClCompile Include="src\system\AiPursueSystem.cpp" />
     <ClCompile Include="src\system\AiSeekSystem.cpp" />
     <ClCompile Include="src\system\AiWanderSystem.cpp" />
     <ClCompile Include="src\system\BaseSystem.cpp" />
@@ -179,6 +182,7 @@ C:\windows\system32\xcopy /Y "$(ProjectDir)deps\bin\debug\*.pdg" "$(TargetDir)"<
   <ItemGroup>
     <ClInclude Include="src\components\AiArrive.h" />
     <ClInclude Include="src\components\AiFlee.h" />
+    <ClInclude Include="src\components\AiPursue.h" />
     <ClInclude Include="src\components\AiSeek.h" />
     <ClInclude Include="src\components\AiWander.h" />
     <ClInclude Include="src\components\Collision.h" />
@@ -192,6 +196,7 @@ C:\windows\system32\xcopy /Y "$(ProjectDir)deps\bin\debug\*.pdg" "$(TargetDir)"<
     <ClInclude Include="src\factories\EnemyArriveFactory.h" />
     <ClInclude Include="src\factories\EnemyFactory.h" />
     <ClInclude Include="src\factories\EnemyFleeFactory.h" />
+    <ClInclude Include="src\factories\EnemyPursueFactory.h" />
     <ClInclude Include="src\factories\EnemySeekFactory.h" />
     <ClInclude Include="src\factories\EnemyWanderFactory.h" />
     <ClInclude Include="src\factories\PlayerFactory.h" />
@@ -199,6 +204,7 @@ C:\windows\system32\xcopy /Y "$(ProjectDir)deps\bin\debug\*.pdg" "$(TargetDir)"<
     <ClInclude Include="src\stdafx.h" />
     <ClInclude Include="src\system\AiArriveSystem.h" />
     <ClInclude Include="src\system\AiFleeSystem.h" />
+    <ClInclude Include="src\system\AiPursueSystem.h" />
     <ClInclude Include="src\system\AiSeekSystem.h" />
     <ClInclude Include="src\system\AiWanderSystem.h" />
     <ClInclude Include="src\system\BaseSystem.h" />

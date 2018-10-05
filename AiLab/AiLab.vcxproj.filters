@@ -144,6 +144,15 @@
     <ClCompile Include="src\factories\EnemyWanderFactory.cpp">
       <Filter>Source Files\factories</Filter>
     </ClCompile>
+    <ClCompile Include="src\factories\EnemyPursueFactory.cpp">
+      <Filter>Source Files\factories</Filter>
+    </ClCompile>
+    <ClCompile Include="src\system\AiPursueSystem.cpp">
+      <Filter>Source Files\system</Filter>
+    </ClCompile>
+    <ClCompile Include="src\components\AiPursue.cpp">
+      <Filter>Source Files\components</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\stdafx.h">
@@ -241,6 +250,15 @@
     </ClInclude>
     <ClInclude Include="src\factories\EnemyWanderFactory.h">
       <Filter>Header Files\factories</Filter>
+    </ClInclude>
+    <ClInclude Include="src\factories\EnemyPursueFactory.h">
+      <Filter>Header Files\factories</Filter>
+    </ClInclude>
+    <ClInclude Include="src\system\AiPursueSystem.h">
+      <Filter>Header Files\system</Filter>
+    </ClInclude>
+    <ClInclude Include="src\components\AiPursue.h">
+      <Filter>Header Files\components</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

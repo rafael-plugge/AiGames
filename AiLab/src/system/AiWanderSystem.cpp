@@ -15,7 +15,7 @@ app::sys::AiWanderSystem::AiWanderSystem(app::Registry & registry)
 	, m_minOffset(-1.0f)
 	, m_stepOffset(0.004f)
 	, m_randomEngine()
-	, m_distribution(0.0f, 100.0f)
+	, m_distribution(-100.0f, 100.0f)
 	, m_offset(0.0f)
 	, m_increase(true)
 {
@@ -47,11 +47,11 @@ void app::sys::AiWanderSystem::update(app::seconds const & dt)
 	{
 		const auto angle = app::Math::radToDeg(std::atan2f(-(location.position.x - playerLocation.position.x), location.position.y - playerLocation.position.y));
 		const auto deltaAngle = app::Math::angleBetween(angle, location.angle) * static_cast<float>(dt.count());
-		motion.angularSpeed = deltaAngle + (aiWander.maxMeander * m_offset);
+		//motion.angularSpeed = deltaAngle + (aiWander.maxMeander * m_offset);
 		// Cap turning speed
 		//motion.angularSpeed = app::Math::cap(deltaAngle, aiWander.maxMeander, -aiWander.maxMeander);
 		// Wander with jitteriness
-		//motion.angularSpeed = deltaAngle + (aiWander.maxMeander * generateRandomPercentage());
+		motion.angularSpeed = deltaAngle + (aiWander.maxMeander * generateRandomPercentage());
 	});
 }
 

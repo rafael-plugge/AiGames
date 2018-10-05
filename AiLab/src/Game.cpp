@@ -10,6 +10,7 @@
 #include "system/AiFleeSystem.h"
 #include "system/AiArriveSystem.h"
 #include "system/AiWanderSystem.h"
+#include "system/AiPursueSystem.h"
 
 // Components
 #include "components/Location.h"
@@ -26,6 +27,7 @@
 #include "factories/EnemyFleeFactory.h"
 #include "factories/EnemyArriveFactory.h"
 #include "factories/EnemyWanderFactory.h"
+#include "factories/EnemyPursueFactory.h"
 
 const sf::Color app::Game::s_clearColor = { 0u, 0u, 0u, 255u };
 
@@ -104,6 +106,7 @@ bool app::Game::createSystems()
 		std::make_unique<sys::AiFleeSystem>(m_registry),
 		std::make_unique<sys::AiArriveSystem>(m_registry),
 		std::make_unique<sys::AiWanderSystem>(m_registry),
+		std::make_unique<sys::AiPursueSystem>(m_registry),
 		std::make_unique<sys::MotionSystem>(m_registry),
 		std::make_unique<sys::CollisionSystem>(m_registry, m_windowSize)
 	};
@@ -125,6 +128,7 @@ bool app::Game::createEntities()
 	app::fact::EnemyFleeFactory(m_registry).create();
 	app::fact::EnemyArriveFactory(m_registry).create();
 	app::fact::EnemyWanderFactory(m_registry).create();
+	app::fact::EnemyPursueFactory(m_registry).create();
 
 	return true;
 }
