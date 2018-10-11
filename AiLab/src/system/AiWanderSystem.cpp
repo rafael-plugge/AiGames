@@ -45,13 +45,13 @@ void app::sys::AiWanderSystem::update(app::seconds const & dt)
 	auto view = m_registry.view<comp::Location, comp::Motion, comp::AiWander>();
 	view.each([&](app::Entity const & entity, comp::Location & location, comp::Motion & motion, comp::AiWander & aiWander)
 	{
-		const auto angle = app::Math::radToDeg(std::atan2f(-(location.position.x - playerLocation.position.x), location.position.y - playerLocation.position.y));
-		const auto deltaAngle = app::Math::angleBetween(angle, location.angle) * static_cast<float>(dt.count());
+		//const auto angle = app::Math::radToDeg(std::atan2f(-(location.position.x - playerLocation.position.x), location.position.y - playerLocation.position.y));
+		//const auto deltaAngle = app::Math::angleBetween(angle, location.angle) * static_cast<float>(dt.count());
 		//motion.angularSpeed = deltaAngle + (aiWander.maxMeander * m_offset);
 		// Cap turning speed
 		//motion.angularSpeed = app::Math::cap(deltaAngle, aiWander.maxMeander, -aiWander.maxMeander);
 		// Wander with jitteriness
-		motion.angularSpeed = deltaAngle + (aiWander.maxMeander * generateRandomPercentage());
+		motion.angularSpeed = (aiWander.maxMeander * generateRandomPercentage());
 	});
 }
 

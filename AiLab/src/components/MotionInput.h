@@ -8,5 +8,6 @@ namespace app::comp
 		bool decreaseSpeed = false;
 		bool rotateLeft = false;
 		bool rotateRight = false;
+		bool stop = false;
 	};
 }

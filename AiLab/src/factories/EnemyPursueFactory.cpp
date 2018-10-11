@@ -28,11 +28,12 @@ app::Entity app::fact::EnemyPursueFactory::create()
 	m_registry.assign<decltype(dimensions)>(entity, std::move(dimensions));
 
 	auto motion = comp::Motion();
-	motion.speed = 0.0f;
+	motion.speed = 2.3f;
 	motion.angularSpeed = 1.0f;
 	m_registry.assign<decltype(motion)>(entity, std::move(motion));
 
-	m_registry.assign<comp::Collision>(entity);
+	auto collision = comp::Collision();
+	m_registry.assign<decltype(collision)>(entity, std::move(collision));
 
 	auto render = comp::Render();
 	sf::Texture texture;
@@ -41,7 +42,9 @@ app::Entity app::fact::EnemyPursueFactory::create()
 		: render.texture = sf::Color::Cyan;
 	m_registry.assign<decltype(render)>(entity, std::move(render));
 
-	m_registry.assign<comp::AiPursue>(entity);
+	auto aiPursue = comp::AiPursue();
+	aiPursue.predictTimeSteps = 60 * 30; // 1 time step = 1/60
+	m_registry.assign<decltype(aiPursue)>(entity, std::move(aiPursue));
 
 	return entity;
 }

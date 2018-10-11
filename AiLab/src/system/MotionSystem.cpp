@@ -27,6 +27,7 @@ void app::sys::MotionSystem::update(app::seconds const & dt)
 			comp::MotionInput & motionInput = m_registry.get<comp::MotionInput>(entity);
 			if (motionInput.increaseSpeed) { motion.speed += m_Acceleration; }
 			if (motionInput.decreaseSpeed) { motion.speed -= m_Acceleration; }
+			if (motionInput.stop) { motion.speed = motion.speed > 0.001f ? (motion.speed * 0.85f) : 0.0f; }
 			if (!(motionInput.rotateLeft && motionInput.rotateRight)) { motion.angularSpeed = 0.0f; }
 			if (motionInput.rotateRight) { motion.angularSpeed = m_MaxAngularSpeed; }
 			if (motionInput.rotateLeft) { motion.angularSpeed = -m_MaxAngularSpeed; }

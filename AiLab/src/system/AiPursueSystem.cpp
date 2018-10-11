@@ -29,11 +29,16 @@ void app::sys::AiPursueSystem::player(app::Registry & registry, app::Entity enti
 
 void app::sys::AiPursueSystem::update(app::seconds const & dt)
 {
-	if (!m_player.has_value()) { return; }
-	auto view = m_registry.view<comp::Location, comp::Motion, comp::AiPursue>();
+	if (!m_player.has_value() || !m_registry.valid(m_player.value())) { return; }
+	auto[playerLocation, playerMotion] = m_registry.get<comp::Location, comp::Motion>(m_player.value());
 
-	view.each([&](app::Entity const entity, comp::Location & location, comp::Motion & motion, comp::AiPursue & aiPursue)
+	m_registry.view<comp::Location, comp::Motion, comp::AiPursue>()
+		.each([&](app::Entity const entity, app::comp::Location & location, comp::Motion & motion, comp::AiPursue & aiPursue)
 	{
-
+		const float angleRad = app::Math::degToRad(playerLocation.angle);
+		const sf::Vector2f playerVelocity = sf::Vector2f{ std::sin(angleRad), -std::cos(angleRad) } * playerMotion.speed;
+		const sf::Vector2f futurePlayerPosition = playerLocation.position + (playerVelocity * static_cast<float>(dt.count() * aiPursue.predictTimeSteps));
+		const auto angle = app::Math::radToDeg(std::atan2f(-(location.position.x - futurePlayerPosition.x), location.position.y - futurePlayerPosition.y));
+		motion.angularSpeed = app::Math::angleBetween(angle, location.angle);
 	});
 }

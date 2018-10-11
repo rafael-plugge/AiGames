@@ -17,5 +17,6 @@ void app::sys::InputSystem::update(app::seconds const & dt)
 		motionInput.decreaseSpeed = m_keyHandler.isKeyDown({ Key::Down, Key::S });
 		motionInput.rotateLeft = m_keyHandler.isKeyDown({ Key::Left, Key::A });
 		motionInput.rotateRight = m_keyHandler.isKeyDown({ Key::Right, Key::D });
+		motionInput.stop = m_keyHandler.isKeyDown(Key::Space);
 	});
 }
