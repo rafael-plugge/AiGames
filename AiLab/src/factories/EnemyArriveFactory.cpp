@@ -1,19 +1,17 @@
 ﻿#include "stdafx.h"
 #include "EnemyArriveFactory.h"
 
-#include "components/Location.h"
-#include "components/Dimensions.h"
-#include "components/Motion.h"
-#include "components/Collision.h"
-#include "components/Render.h"
-#include "components/AiSeek.h"
-#include "components/AiArrive.h"
-
-app::fact::EnemyArriveFactory::EnemyArriveFactory(app::Registry & registry, sf::Vector2f position, float speed, float radius)
+app::fact::EnemyArriveFactory::EnemyArriveFactory(app::Registry & registry, comp::Location location, comp::Dimensions dimensions, comp::Motion motion,
+	comp::Collision collision, comp::Render render, comp::AiSeek aiSeek, comp::AiArrive aiArrive
+)
 	: BaseFactory(registry)
-	, m_position(position)
-	, m_radius(radius)
-	, m_speed(speed)
+	, m_location(location)
+	, m_dimensions(dimensions)
+	, m_motion(motion)
+	, m_collision(collision)
+	, m_render(render)
+	, m_aiSeek(aiSeek)
+	, m_aiArrive(aiArrive)
 {
 }
 
@@ -21,6 +19,15 @@ app::Entity app::fact::EnemyArriveFactory::create()
 {
 	app::Entity entity = m_registry.create();
 
+	m_registry.assign<decltype(m_location)>(entity, m_location);
+	m_registry.assign<decltype(m_dimensions)>(entity, m_dimensions);
+	m_registry.assign<decltype(m_motion)>(entity, m_motion);
+	m_registry.assign<decltype(m_collision)>(entity, m_collision);
+	m_registry.assign<decltype(m_render)>(entity, m_render);
+	m_registry.assign<decltype(m_aiSeek)>(entity, m_aiSeek);
+	m_registry.assign<decltype(m_aiArrive)>(entity, m_aiArrive);
+
+	/*
 	auto location = comp::Location();
 	location.position = m_position;
 	location.angle = 0.0f;
@@ -52,6 +59,7 @@ app::Entity app::fact::EnemyArriveFactory::create()
 	aiArrive.brakeSpeed = 0.95f;
 	aiArrive.chaseSpeed = 1.5f;
 	m_registry.assign<comp::AiArrive>(entity, std::move(aiArrive));
+	/**/
 
 	return entity;
 }

@@ -78,6 +78,7 @@ bool app::Game::init()
 		sf::ContextSettings settings = sf::ContextSettings();
 		settings.antialiasingLevel = 32u;
 		m_window.create(m_windowBuffer, m_windowTitle, sf::Style::Default);
+		m_window.setVerticalSyncEnabled(true);
 
 		return createCompDependencies() && createSystems() && createEntities();
 	}
@@ -123,12 +124,124 @@ bool app::Game::createEntities()
 	app::Entity const player = 
 		app::fact::PlayerFactory(m_registry).create();
 
-	app::fact::EnemyFactory(m_registry).create();
 	app::fact::EnemyFleeFactory(m_registry).create();
-	app::fact::EnemyArriveFactory(m_registry, { 1000.0f, 700.0f }, 1.5f, 200.0f).create();
-	app::fact::EnemyArriveFactory(m_registry, { 1200.0f, 100.0f }, 0.7f, 100.0f).create();
-	app::fact::EnemyWanderFactory(m_registry).create();
-	app::fact::EnemyPursueFactory(m_registry).create();
+
+	// create enemy arrive 1
+	{
+		auto location = comp::Location();
+		location.position = { 1000.0f, 700.0f };
+		location.angle = 0.0f;
+
+		auto dimensions = comp::Dimensions();
+		dimensions.size = { 50.0f, 50.0f };
+		dimensions.origin = dimensions.size / 2.0f;
+
+		auto motion = comp::Motion();
+		motion.speed = 15.0f;
+		motion.angularSpeed = 0.0f;
+
+		auto collision = comp::Collision();
+
+		auto render = comp::Render();
+		sf::Texture texture;
+		texture.loadFromFile("./assets/enemy.png")
+			? render.texture = std::make_shared<sf::Texture>(std::move(texture))
+			: render.texture = sf::Color::Yellow;
+
+		auto aiSeek = comp::AiSeek();
+
+		auto aiArrive = comp::AiArrive();
+		aiArrive.radius = 200.0f;
+		aiArrive.brakeSpeed = 0.95f;
+		aiArrive.chaseSpeed = 1.5f;
+		app::fact::EnemyArriveFactory(m_registry, std::move(location), std::move(dimensions), std::move(motion), std::move(collision), std::move(render), std::move(aiSeek), std::move(aiArrive))
+			.create();
+	}
+	// create enemy arrive 2
+	{
+		auto location = comp::Location();
+		location.position = { 1200.0f, 100.0f };
+		location.angle = 0.0f;
+
+		auto dimensions = comp::Dimensions();
+		dimensions.size = { 50.0f, 50.0f };
+		dimensions.origin = dimensions.size / 2.0f;
+
+		auto motion = comp::Motion();
+		motion.speed = 0.7f;
+		motion.angularSpeed = 0.0f;
+
+		auto collision = comp::Collision();
+
+		auto render = comp::Render();
+		sf::Texture texture;
+		texture.loadFromFile("./assets/enemy.png")
+			? render.texture = std::make_shared<sf::Texture>(std::move(texture))
+			: render.texture = sf::Color::Yellow;
+
+		auto aiSeek = comp::AiSeek();
+
+		auto aiArrive = comp::AiArrive();
+		aiArrive.radius = 100.0f;
+		aiArrive.brakeSpeed = 0.95f;
+		aiArrive.chaseSpeed = 1.5f;
+		app::fact::EnemyArriveFactory(m_registry, std::move(location), std::move(dimensions), std::move(motion), std::move(collision), std::move(render), std::move(aiSeek), std::move(aiArrive))
+			.create();
+	}
+	// create enemy wander
+	{
+		auto location = comp::Location();
+		location.position = { 1200.0f, 700.0f };
+		location.angle = -45.0f;
+
+		auto dimensions = comp::Dimensions();
+		dimensions.size = { 50.0f, 50.0f };
+		dimensions.origin = dimensions.size / 2.0f;
+
+		auto motion = comp::Motion();
+		motion.speed = 0.5f;
+		motion.angularSpeed = 0.0f;
+
+		auto collision = comp::Collision();
+
+		auto render = comp::Render();
+		sf::Texture texture;
+		texture.loadFromFile("./assets/enemy.png")
+			? render.texture = std::make_shared<sf::Texture>(std::move(texture))
+			: render.texture = sf::Color::Yellow;
+
+		auto aiWander = comp::AiWander();
+		aiWander.maxMeander = 1.2f;
+		app::fact::EnemyWanderFactory(m_registry, std::move(location), std::move(dimensions), std::move(motion), std::move(collision), std::move(render), std::move(aiWander))
+			.create();
+	}
+	// create enemy pursue
+	{
+		auto location = comp::Location();
+		location.position = { 900.0f, 300.0f };
+		location.angle = 0.0f;
+
+		auto dimensions = comp::Dimensions();
+		dimensions.size = { 120.0f, 120.0f };
+		dimensions.origin = dimensions.size / 2.0f;
+
+		auto motion = comp::Motion();
+		motion.speed = 2.3f;
+		motion.angularSpeed = 1.0f;
+
+		auto collision = comp::Collision();
+
+		auto render = comp::Render();
+		sf::Texture texture;
+		texture.loadFromFile("./assets/enemy.png")
+			? render.texture = std::make_shared<sf::Texture>(std::move(texture))
+			: render.texture = sf::Color::Cyan;
+
+		auto aiPursue = comp::AiPursue();
+		aiPursue.predictTimeSteps = 60 * 30; // 1 time step = 1/60
+		app::fact::EnemyPursueFactory(m_registry, std::move(location), std::move(dimensions), std::move(motion), std::move(collision), std::move(render), std::move(aiPursue))
+			.create();
+	}
 
 	return true;
 }

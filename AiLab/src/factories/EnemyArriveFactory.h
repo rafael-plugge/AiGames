@@ -3,12 +3,23 @@
 
 #include "BaseFactory.h"
 
+#include "components/Location.h"
+#include "components/Dimensions.h"
+#include "components/Motion.h"
+#include "components/Collision.h"
+#include "components/Render.h"
+#include "components/AiSeek.h"
+#include "components/AiArrive.h"
+
 namespace app::fact
 {
 	class EnemyArriveFactory : public BaseFactory
 	{
 	public: // Constructors/Destructor/Assignments
-		EnemyArriveFactory(app::Registry & registry, sf::Vector2f position = { 1000.0f, 700.0f }, float speed = 1.5f, float radius = 200.0f);
+		EnemyArriveFactory(app::Registry & registry,
+			comp::Location location, comp::Dimensions dimensions,
+			comp::Motion motion, comp::Collision collision,
+			comp::Render render, comp::AiSeek aiSeek, comp::AiArrive aiArrive);
 
 		EnemyArriveFactory() = delete;
 		EnemyArriveFactory(EnemyArriveFactory const &) = default;
@@ -32,9 +43,13 @@ namespace app::fact
 	private: // Private Member Functions
 	private: // Private Static Variables
 	private: // Private Member Variables
-		sf::Vector2f const m_position;
-		float const m_radius;
-		float const m_speed;
+		comp::Location m_location;
+		comp::Dimensions m_dimensions;
+		comp::Motion m_motion;
+		comp::Collision m_collision;
+		comp::Render m_render;
+		comp::AiSeek m_aiSeek;
+		comp::AiArrive m_aiArrive;
 	};
 }
 
