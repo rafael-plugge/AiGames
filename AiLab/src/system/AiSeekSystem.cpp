@@ -32,11 +32,12 @@ void app::sys::AiSeekSystem::update(app::seconds const & dt)
 {
 	if (!m_player.has_value() || !m_registry.valid(m_player.value())) { return; }
 	auto [playerLocation, playerMotion] = m_registry.get<comp::Location, comp::Motion>(m_player.value());
+	sf::Vector2f const & playerPosition = playerLocation.position;
 
 	auto view = m_registry.view<comp::Location, comp::Motion, comp::AiSeek>(entt::persistent_t());
 	view.each([&](app::Entity const & entity, comp::Location & location, comp::Motion & motion, comp::AiSeek & aiSeek)
 	{
-		const auto angle = app::Math::radToDeg(std::atan2f(-(location.position.x - playerLocation.position.x), location.position.y - playerLocation.position.y));
+		const auto angle = app::Math::radToDeg(std::atan2f(-(location.position.x - playerPosition.x), location.position.y - playerPosition.y));
 		motion.angularSpeed = app::Math::angleBetween(angle, location.angle) * static_cast<float>(dt.count());
 	});
 }

@@ -9,8 +9,10 @@
 #include "components/AiSeek.h"
 #include "components/AiArrive.h"
 
-app::fact::EnemyArriveFactory::EnemyArriveFactory(app::Registry & registry)
+app::fact::EnemyArriveFactory::EnemyArriveFactory(app::Registry & registry, sf::Vector2f position, float radius)
 	: BaseFactory(registry)
+	, m_position(position)
+	, m_radius(radius)
 {
 }
 
@@ -19,12 +21,12 @@ app::Entity app::fact::EnemyArriveFactory::create()
 	app::Entity entity = m_registry.create();
 
 	auto location = comp::Location();
-	location.position = { 1000.0f, 700.0f };
+	location.position = m_position;
 	location.angle = 0.0f;
 	m_registry.assign<comp::Location>(entity, std::move(location));
 
 	auto dimensions = comp::Dimensions();
-	dimensions.size = { 150.0f, 150.0f };
+	dimensions.size = { 50.0f, 50.0f };
 	dimensions.origin = dimensions.size / 2.0f;
 	m_registry.assign<comp::Dimensions>(entity, std::move(dimensions));
 
@@ -45,7 +47,7 @@ app::Entity app::fact::EnemyArriveFactory::create()
 	m_registry.assign<comp::AiSeek>(entity);
 	
 	auto aiArrive = comp::AiArrive();
-	aiArrive.radius = 200.0f;
+	aiArrive.radius = m_radius;
 	aiArrive.brakeSpeed = 0.95f;
 	aiArrive.chaseSpeed = 1.5f;
 	m_registry.assign<comp::AiArrive>(entity, std::move(aiArrive));
