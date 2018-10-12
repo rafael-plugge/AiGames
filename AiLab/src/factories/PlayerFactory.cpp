@@ -49,7 +49,10 @@ app::Entity app::fact::PlayerFactory::create()
 
 	auto label = comp::Label();
 	std::shared_ptr<sf::Font> font = std::make_shared<sf::Font>();
-	if (font->loadFromFile("")) { label.font = font; }
+	if (font->loadFromFile("./assets/calibri.ttf")) { label.font = font; }
+	label.color = sf::Color::White;
+	label.offset = { 0.0f, -100.0f };
+	label.text = "Player";
 
 	return entity;
 }

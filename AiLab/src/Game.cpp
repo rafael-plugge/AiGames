@@ -125,8 +125,8 @@ bool app::Game::createEntities()
 
 	app::fact::EnemyFactory(m_registry).create();
 	app::fact::EnemyFleeFactory(m_registry).create();
-	app::fact::EnemyArriveFactory(m_registry, { 1000.0f, 700.0f }, 200.0f).create();
-	app::fact::EnemyArriveFactory(m_registry, { 1200.0f, 100.0f }, 50.0f).create();
+	app::fact::EnemyArriveFactory(m_registry, { 1000.0f, 700.0f }, 1.5f, 200.0f).create();
+	app::fact::EnemyArriveFactory(m_registry, { 1200.0f, 100.0f }, 0.7f, 100.0f).create();
 	app::fact::EnemyWanderFactory(m_registry).create();
 	app::fact::EnemyPursueFactory(m_registry).create();
 

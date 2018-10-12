@@ -9,10 +9,11 @@
 #include "components/AiSeek.h"
 #include "components/AiArrive.h"
 
-app::fact::EnemyArriveFactory::EnemyArriveFactory(app::Registry & registry, sf::Vector2f position, float radius)
+app::fact::EnemyArriveFactory::EnemyArriveFactory(app::Registry & registry, sf::Vector2f position, float speed, float radius)
 	: BaseFactory(registry)
 	, m_position(position)
 	, m_radius(radius)
+	, m_speed(speed)
 {
 }
 
@@ -31,7 +32,7 @@ app::Entity app::fact::EnemyArriveFactory::create()
 	m_registry.assign<comp::Dimensions>(entity, std::move(dimensions));
 
 	auto motion = comp::Motion();
-	motion.speed = 1.5f;
+	motion.speed = m_speed;
 	motion.angularSpeed = 0.0f;
 	m_registry.assign<comp::Motion>(entity, std::move(motion));
 

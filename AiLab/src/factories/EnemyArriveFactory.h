@@ -8,7 +8,7 @@ namespace app::fact
 	class EnemyArriveFactory : public BaseFactory
 	{
 	public: // Constructors/Destructor/Assignments
-		EnemyArriveFactory(app::Registry & registry, sf::Vector2f position = { 1000.0f, 700.0f }, float radius = 200.0f);
+		EnemyArriveFactory(app::Registry & registry, sf::Vector2f position = { 1000.0f, 700.0f }, float speed = 1.5f, float radius = 200.0f);
 
 		EnemyArriveFactory() = delete;
 		EnemyArriveFactory(EnemyArriveFactory const &) = default;
@@ -34,6 +34,7 @@ namespace app::fact
 	private: // Private Member Variables
 		sf::Vector2f const m_position;
 		float const m_radius;
+		float const m_speed;
 	};
 }
 
