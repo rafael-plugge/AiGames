@@ -11,6 +11,7 @@
 #include "system/AiArriveSystem.h"
 #include "system/AiWanderSystem.h"
 #include "system/AiPursueSystem.h"
+#include "system/ConeVisionSystem.h"
 
 // Components
 #include "components/Location.h"
@@ -108,6 +109,7 @@ bool app::Game::createSystems()
 		std::make_unique<sys::AiArriveSystem>(m_registry),
 		std::make_unique<sys::AiWanderSystem>(m_registry),
 		std::make_unique<sys::AiPursueSystem>(m_registry),
+		std::make_unique<sys::ConeVisionSystem>(m_registry),
 		std::make_unique<sys::MotionSystem>(m_registry),
 		std::make_unique<sys::CollisionSystem>(m_registry, m_windowSize)
 	};
@@ -142,9 +144,13 @@ bool app::Game::createEntities()
 
 		auto collision = comp::Collision();
 
+		auto coneVision = comp::ConeVision();
+		coneVision.angle = 30.0f;
+		coneVision.radius = 150.0f;
+
 		auto render = comp::Render();
 		sf::Texture texture;
-		texture.loadFromFile("./assets/enemy.png")
+		texture.loadFromFile("./assets/enemy_arrive.png")
 			? render.texture = std::make_shared<sf::Texture>(std::move(texture))
 			: render.texture = sf::Color::Yellow;
 
@@ -154,7 +160,7 @@ bool app::Game::createEntities()
 		aiArrive.radius = 200.0f;
 		aiArrive.brakeSpeed = 0.95f;
 		aiArrive.chaseSpeed = 1.5f;
-		app::fact::EnemyArriveFactory(m_registry, std::move(location), std::move(dimensions), std::move(motion), std::move(collision), std::move(render), std::move(aiSeek), std::move(aiArrive))
+		app::fact::EnemyArriveFactory(m_registry, std::move(location), std::move(dimensions), std::move(motion), std::move(collision), std::move(coneVision), std::move(render), std::move(aiSeek), std::move(aiArrive))
 			.create();
 	}
 	// create enemy arrive 2
@@ -173,9 +179,13 @@ bool app::Game::createEntities()
 
 		auto collision = comp::Collision();
 
+		auto coneVision = comp::ConeVision();
+		coneVision.angle = 30.0f;
+		coneVision.radius = 150.0f;
+
 		auto render = comp::Render();
 		sf::Texture texture;
-		texture.loadFromFile("./assets/enemy.png")
+		texture.loadFromFile("./assets/enemy_arrive.png")
 			? render.texture = std::make_shared<sf::Texture>(std::move(texture))
 			: render.texture = sf::Color::Yellow;
 
@@ -185,7 +195,7 @@ bool app::Game::createEntities()
 		aiArrive.radius = 100.0f;
 		aiArrive.brakeSpeed = 0.95f;
 		aiArrive.chaseSpeed = 1.5f;
-		app::fact::EnemyArriveFactory(m_registry, std::move(location), std::move(dimensions), std::move(motion), std::move(collision), std::move(render), std::move(aiSeek), std::move(aiArrive))
+		app::fact::EnemyArriveFactory(m_registry, std::move(location), std::move(dimensions), std::move(motion), std::move(collision), std::move(coneVision), std::move(render), std::move(aiSeek), std::move(aiArrive))
 			.create();
 	}
 	// create enemy wander
@@ -204,15 +214,19 @@ bool app::Game::createEntities()
 
 		auto collision = comp::Collision();
 
+		auto coneVision = comp::ConeVision();
+		coneVision.angle = 30.0f;
+		coneVision.radius = 140.0f;
+
 		auto render = comp::Render();
 		sf::Texture texture;
-		texture.loadFromFile("./assets/enemy.png")
+		texture.loadFromFile("./assets/enemy_wander.png")
 			? render.texture = std::make_shared<sf::Texture>(std::move(texture))
 			: render.texture = sf::Color::Yellow;
 
 		auto aiWander = comp::AiWander();
 		aiWander.maxMeander = 1.2f;
-		app::fact::EnemyWanderFactory(m_registry, std::move(location), std::move(dimensions), std::move(motion), std::move(collision), std::move(render), std::move(aiWander))
+		app::fact::EnemyWanderFactory(m_registry, std::move(location), std::move(dimensions), std::move(motion), std::move(collision), std::move(coneVision), std::move(render), std::move(aiWander))
 			.create();
 	}
 	// create enemy pursue
@@ -231,15 +245,19 @@ bool app::Game::createEntities()
 
 		auto collision = comp::Collision();
 
+		auto coneVision = comp::ConeVision();
+		coneVision.angle = 10.0f;
+		coneVision.radius = 100.0f;
+
 		auto render = comp::Render();
 		sf::Texture texture;
-		texture.loadFromFile("./assets/enemy.png")
+		texture.loadFromFile("./assets/enemy_pursue.png")
 			? render.texture = std::make_shared<sf::Texture>(std::move(texture))
 			: render.texture = sf::Color::Cyan;
 
 		auto aiPursue = comp::AiPursue();
 		aiPursue.predictTimeSteps = 60 * 30; // 1 time step = 1/60
-		app::fact::EnemyPursueFactory(m_registry, std::move(location), std::move(dimensions), std::move(motion), std::move(collision), std::move(render), std::move(aiPursue))
+		app::fact::EnemyPursueFactory(m_registry, std::move(location), std::move(dimensions), std::move(motion), std::move(collision), std::move(coneVision), std::move(render), std::move(aiPursue))
 			.create();
 	}
 

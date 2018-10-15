@@ -23,7 +23,17 @@ namespace app
 		template<typename T>
 		static constexpr T radToDeg(T const & radians) { return radians * (static_cast<T>(180) / pi<T>()); }
 		template<typename T>
-		static constexpr T length(sf::Vector2<T> const & v) { return std::sqrt((v.x * v.x) + (v.y * v.y)); }
+		static constexpr T length(sf::Vector2<T> const & v) { return std::sqrt(lengthSqr(v)); }
+		template<typename T>
+		static constexpr T lengthSqr(sf::Vector2<T> const & v) { return (v.x * v.x) + (v.y * v.y); }
+		template<typename T>
+		static constexpr T toAngle(sf::Vector2<T> const & v) { return degToRad(toAngleRad(v)); }
+		template<typename T>
+		static constexpr T toAngleRad(sf::Vector2<T> const & v) { return std::atan2(v.y, v.x); }
+		template<typename T>
+		static constexpr sf::Vector2<T> toVector(T const & angle) { return sf::Vector2<T>(std::cos(degToRad(angle)), std::sin(degToRad(angle))); }
+		template<typename T>
+		static constexpr sf::Vector2<T> toVectorRad(T const & radAngle) { return sf::Vector2<T>(std::cos(radAngle), std::sin(radAngle)); }
 		template<typename T>
 		static constexpr T absolute(T const & num) { return num > 0 ? num : -num; }
 		template<typename T>
