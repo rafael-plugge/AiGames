@@ -85,6 +85,7 @@
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <LanguageStandard>stdcpp17</LanguageStandard>
+      <AdditionalIncludeDirectories>$(ProjectDir)src</AdditionalIncludeDirectories>
     </ClCompile>
     <PostBuildEvent>
       <Command>C:\windows\system32\xcopy /Y "$(SolutionDir)deps\bin\*.dll" "$(TargetDir)"
@@ -101,6 +102,7 @@ C:\windows\system32\xcopy /Y "$(ProjectDir)deps\bin\debug\*.pdg" "$(TargetDir)"<
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
+      <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -113,6 +115,7 @@ C:\windows\system32\xcopy /Y "$(ProjectDir)deps\bin\debug\*.pdg" "$(TargetDir)"<
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <LanguageStandard>stdcpp17</LanguageStandard>
+      <AdditionalIncludeDirectories>$(ProjectDir)src</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
@@ -133,6 +136,7 @@ C:\windows\system32\xcopy /Y "$(ProjectDir)deps\bin\release\*.dll" "$(TargetDir)
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
+      <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
@@ -147,6 +151,14 @@ C:\windows\system32\xcopy /Y "$(ProjectDir)deps\bin\release\*.dll" "$(TargetDir)
     <None Include="deps\lib\release\.gitkeep" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\graphics\SDLDeleter.cpp" />
+    <ClCompile Include="src\graphics\SDLWindow.cpp" />
+    <ClCompile Include="src\graphics\SDLWindowParams.cpp" />
+    <ClCompile Include="src\graphics\SfWindow.cpp" />
+    <ClCompile Include="src\graphics\SfWindowParams.cpp" />
+    <ClCompile Include="src\graphics\Window.cpp" />
+    <ClCompile Include="src\graphics\WindowParams.cpp" />
+    <ClCompile Include="src\graphics\WindowStyle.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
@@ -154,6 +166,14 @@ C:\windows\system32\xcopy /Y "$(ProjectDir)deps\bin\release\*.dll" "$(TargetDir)
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\graphics\SDLDeleter.h" />
+    <ClInclude Include="src\graphics\SDLWindow.h" />
+    <ClInclude Include="src\graphics\SDLWindowParams.h" />
+    <ClInclude Include="src\graphics\SfWindow.h" />
+    <ClInclude Include="src\graphics\SfWindowParams.h" />
+    <ClInclude Include="src\graphics\Window.h" />
+    <ClInclude Include="src\graphics\WindowParams.h" />
+    <ClInclude Include="src\graphics\WindowStyle.h" />
     <ClInclude Include="src\stdafx.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
