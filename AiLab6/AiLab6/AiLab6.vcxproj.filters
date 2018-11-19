@@ -1,0 +1,71 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Dependencies">
+      <UniqueIdentifier>{486f270e-5094-4386-8d5e-53aca246389c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Dependencies\Binary Files">
+      <UniqueIdentifier>{a7e56732-30ad-479c-bc00-6cb6babd2234}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Dependencies\Include Files">
+      <UniqueIdentifier>{b039c906-4411-41df-a275-c59873ebb3fa}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Dependencies\Library Files">
+      <UniqueIdentifier>{387a7beb-6927-4979-aae5-4857e59b155a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Dependencies\Library Files\Debug">
+      <UniqueIdentifier>{06520a8b-e9fe-4deb-954a-b482878c814b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Dependencies\Library Files\Release">
+      <UniqueIdentifier>{d4070a77-1973-448e-8960-9366e2def6a9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Dependencies\Binary Files\Debug">
+      <UniqueIdentifier>{52d52214-a12e-4012-a76b-922a09af4042}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Dependencies\Binary Files\Release">
+      <UniqueIdentifier>{de805dbc-3502-4d88-9e6e-321060160b28}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="deps\bin\debug\.gitkeep">
+      <Filter>Dependencies\Binary Files\Debug</Filter>
+    </None>
+    <None Include="deps\bin\release\.gitkeep">
+      <Filter>Dependencies\Binary Files\Release</Filter>
+    </None>
+    <None Include="deps\lib\debug\.gitkeep">
+      <Filter>Dependencies\Library Files\Debug</Filter>
+    </None>
+    <None Include="deps\lib\release\.gitkeep">
+      <Filter>Dependencies\Library Files\Release</Filter>
+    </None>
+    <None Include="deps\include\.gitkeep">
+      <Filter>Dependencies\Include Files</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="src\main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\stdafx.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="src\stdafx.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
