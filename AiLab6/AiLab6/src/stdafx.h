@@ -80,10 +80,19 @@
 #include <stack>
 #include <queue>
 
-// STL Utility libraries
-#include <exception>
-#include <type_traits>
+// STL Dynamic Memory Management Libraries
+#include <new>
+#include <scoped_allocator>
 #include <memory>
+#include <memory_resource>
+
+// STL Error Libraries
+#include <exception>
+#include <stdexcept>
+#include <system_error>
+
+// STL Utility libraries
+#include <type_traits>
 #include <random>
 #include <chrono>
 #include <functional>
