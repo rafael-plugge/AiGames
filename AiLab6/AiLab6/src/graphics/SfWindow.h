@@ -42,7 +42,7 @@ namespace app::gra
 		static const sf::Color s_clearColor;
 	private: // Private Member Variables
 		sf::ContextSettings m_contextSettings;
-		std::shared_ptr<sf::RenderWindow> m_sfWindow;
+		std::unique_ptr<sf::RenderWindow> m_sfWindow;
 	};
 }
 

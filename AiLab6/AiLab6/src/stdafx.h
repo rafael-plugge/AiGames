@@ -150,8 +150,9 @@
 
 #endif // _USE_JSON
 
+#include "utilities/Console.h"
+
 // Global constants
 namespace app
 {
-	typedef std::chrono::duration<double> seconds;
 }

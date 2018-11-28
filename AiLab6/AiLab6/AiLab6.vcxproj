@@ -151,6 +151,7 @@ C:\windows\system32\xcopy /Y "$(ProjectDir)deps\bin\release\*.dll" "$(TargetDir)
     <None Include="deps\lib\release\.gitkeep" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\Game.cpp" />
     <ClCompile Include="src\graphics\SDLDeleter.cpp" />
     <ClCompile Include="src\graphics\SDLWindow.cpp" />
     <ClCompile Include="src\graphics\SDLWindowParams.cpp" />
@@ -159,13 +160,18 @@ C:\windows\system32\xcopy /Y "$(ProjectDir)deps\bin\release\*.dll" "$(TargetDir)
     <ClCompile Include="src\graphics\Window.cpp" />
     <ClCompile Include="src\graphics\WindowParams.cpp" />
     <ClCompile Include="src\graphics\WindowStyle.cpp" />
+    <ClCompile Include="src\input\Keyhandler.cpp" />
+    <ClCompile Include="src\input\MouseHandler.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="src\utilities\Console.cpp" />
+    <ClCompile Include="src\utilities\Time.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\Game.h" />
     <ClInclude Include="src\graphics\SDLDeleter.h" />
     <ClInclude Include="src\graphics\SDLWindow.h" />
     <ClInclude Include="src\graphics\SDLWindowParams.h" />
@@ -174,7 +180,11 @@ C:\windows\system32\xcopy /Y "$(ProjectDir)deps\bin\release\*.dll" "$(TargetDir)
     <ClInclude Include="src\graphics\Window.h" />
     <ClInclude Include="src\graphics\WindowParams.h" />
     <ClInclude Include="src\graphics\WindowStyle.h" />
+    <ClInclude Include="src\input\Keyhandler.h" />
+    <ClInclude Include="src\input\MouseHandler.h" />
     <ClInclude Include="src\stdafx.h" />
+    <ClInclude Include="src\utilities\Console.h" />
+    <ClInclude Include="src\utilities\Time.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
