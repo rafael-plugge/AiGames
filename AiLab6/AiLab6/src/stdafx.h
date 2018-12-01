@@ -8,8 +8,6 @@
 // Define what libraries to use
 #define _USE_SFML
 //#define _USE_SDL
-//#define _USE_ENTT
-//#define _USE_JSON
 
 
 #ifdef _DEBUG
@@ -145,23 +143,15 @@
 
 #endif // _USE_SDL
 
-#ifdef _USE_ENTT
-
 // Entt Library
-#include <entt/entt.hpp>
-
-#endif // _USE_ENTT
-
-#ifdef _USE_JSON
+#include <Entt/entt.hpp>
 
 // Json Library
 #include <Js/json.hpp>
-
-#endif // _USE_JSON
-
-#include "utilities/Console.h"
 
 // Global constants
 namespace app
 {
 }
+
+#include "utilities/Console.h"

@@ -63,6 +63,11 @@ void app::gra::SfWindow::clear() const
 	m_sfWindow->clear(s_clearColor);
 }
 
+void app::gra::SfWindow::draw(sf::Drawable const & drawable, sf::RenderStates const & states)
+{
+	m_sfWindow->draw(drawable, states);
+}
+
 void app::gra::SfWindow::display() const
 {
 	m_sfWindow->display();

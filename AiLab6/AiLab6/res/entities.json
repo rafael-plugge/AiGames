@@ -1,0 +1,24 @@
+{
+    "grid": {
+        "location": {
+            "position": {
+                "x": 683,
+                "y": 384
+            },
+            "orientation": 0
+        },
+        "dimensions": {
+            "size": {
+                "x": 100,
+                "y": 70
+            }
+        },
+        "render": {
+            "color": {
+                "red": 0,
+                "green": 255,
+                "blue": 0
+            }
+        }
+    }
+}

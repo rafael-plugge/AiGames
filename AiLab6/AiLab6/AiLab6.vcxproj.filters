@@ -55,6 +55,36 @@
     <Filter Include="Source Files\utilities">
       <UniqueIdentifier>{7e260fe6-5bfc-4ec2-846e-aad01beaf4ff}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\math">
+      <UniqueIdentifier>{71d6596b-23ff-44a3-aa2a-ecf71bf80214}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\math">
+      <UniqueIdentifier>{eb60e4f6-c8ea-4771-802d-2a0eda18e8e1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\components">
+      <UniqueIdentifier>{7cde5570-f32f-4291-9b0c-4d1d0718e0a2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\systems">
+      <UniqueIdentifier>{b71fc659-5340-4ee0-ba9b-58acb6817a0c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\components">
+      <UniqueIdentifier>{5aaad364-a86d-4d08-8d48-ecd0ae37684a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\systems">
+      <UniqueIdentifier>{d675ed08-d2b3-4604-ac1c-0cc87922bd7f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\visitors">
+      <UniqueIdentifier>{5ddac570-9d97-41a7-8750-da84a272a383}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\visitors">
+      <UniqueIdentifier>{c5dcd453-ae8b-4cce-8e29-43e5e6536c1e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\factories">
+      <UniqueIdentifier>{e3377306-b081-451e-b306-ac79ff9b58e0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\factories">
+      <UniqueIdentifier>{8c29fbd8-e023-4d75-b8cc-b489abd422af}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="deps\bin\debug\.gitkeep">
@@ -71,6 +101,9 @@
     </None>
     <None Include="deps\include\.gitkeep">
       <Filter>Dependencies\Include Files</Filter>
+    </None>
+    <None Include="res\entities.json">
+      <Filter>Resource Files</Filter>
     </None>
   </ItemGroup>
   <ItemGroup>
@@ -119,6 +152,42 @@
     <ClCompile Include="src\utilities\Console.cpp">
       <Filter>Source Files\utilities</Filter>
     </ClCompile>
+    <ClCompile Include="src\math\Vector2.cpp">
+      <Filter>Source Files\math</Filter>
+    </ClCompile>
+    <ClCompile Include="src\systems\BaseSystem.cpp">
+      <Filter>Source Files\systems</Filter>
+    </ClCompile>
+    <ClCompile Include="src\visitors\RenderRectVisitor.cpp">
+      <Filter>Source Files\visitors</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Registry.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\systems\RenderRectSystem.cpp">
+      <Filter>Source Files\systems</Filter>
+    </ClCompile>
+    <ClCompile Include="src\components\Location.cpp">
+      <Filter>Source Files\components</Filter>
+    </ClCompile>
+    <ClCompile Include="src\components\RenderRect.cpp">
+      <Filter>Source Files\components</Filter>
+    </ClCompile>
+    <ClCompile Include="src\components\Dimensions.cpp">
+      <Filter>Source Files\components</Filter>
+    </ClCompile>
+    <ClCompile Include="src\utilities\JsonLoader.cpp">
+      <Filter>Source Files\utilities</Filter>
+    </ClCompile>
+    <ClCompile Include="src\visitors\RenderVisitor.cpp">
+      <Filter>Source Files\visitors</Filter>
+    </ClCompile>
+    <ClCompile Include="src\factories\EntityFactory.cpp">
+      <Filter>Source Files\factories</Filter>
+    </ClCompile>
+    <ClCompile Include="src\factories\GridFactory.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\stdafx.h">
@@ -162,6 +231,42 @@
     </ClInclude>
     <ClInclude Include="src\utilities\Time.h">
       <Filter>Header Files\utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="src\math\Vector2.h">
+      <Filter>Header Files\math</Filter>
+    </ClInclude>
+    <ClInclude Include="src\systems\BaseSystem.h">
+      <Filter>Header Files\systems</Filter>
+    </ClInclude>
+    <ClInclude Include="src\visitors\RenderRectVisitor.h">
+      <Filter>Header Files\visitors</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Registry.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\systems\RenderRectSystem.h">
+      <Filter>Header Files\systems</Filter>
+    </ClInclude>
+    <ClInclude Include="src\components\Location.h">
+      <Filter>Header Files\components</Filter>
+    </ClInclude>
+    <ClInclude Include="src\components\RenderRect.h">
+      <Filter>Header Files\components</Filter>
+    </ClInclude>
+    <ClInclude Include="src\components\Dimensions.h">
+      <Filter>Header Files\components</Filter>
+    </ClInclude>
+    <ClInclude Include="src\visitors\RenderVisitor.h">
+      <Filter>Header Files\visitors</Filter>
+    </ClInclude>
+    <ClInclude Include="src\utilities\JsonLoader.h">
+      <Filter>Header Files\utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="src\factories\EntityFactory.h">
+      <Filter>Header Files\factories</Filter>
+    </ClInclude>
+    <ClInclude Include="src\factories\GridFactory.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

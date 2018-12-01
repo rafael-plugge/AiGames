@@ -27,6 +27,7 @@ namespace app::gra
 		// Inherited via Window
 		virtual void pollEvents() override;
 		virtual void clear() const override;
+		void draw(sf::Drawable const & drawable, sf::RenderStates const & states = sf::RenderStates::Default);
 		virtual void display() const override;
 	public: // Public Static Variables
 	public: // Public Member Variables

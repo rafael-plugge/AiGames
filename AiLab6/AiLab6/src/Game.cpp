@@ -1,10 +1,22 @@
 ﻿#include "stdafx.h"
 #include "Game.h"
 
-#include "graphics/SfWindow.h"
+// Components
+#include "components/Location.h"
+#include "components/Dimensions.h"
+#include "components/RenderRect.h"
+
+// Systems
+#include "systems/RenderRectSystem.h"
+
+// Factories
+#include "factories/GridFactory.h"
 
 app::Game::Game()
 	: m_window(nullptr)
+	, m_registry(app::Reg::get())
+	, m_updateSystems()
+	, m_renderSystems()
 {
 }
 
@@ -42,11 +54,49 @@ int app::Game::run()
 
 bool app::Game::init()
 {
-	auto uptrWindow = std::make_unique<app::gra::SfWindow>(
-		app::gra::SfWindowParams("Ai Lab 6", 1366u, 768u));
-	m_window = std::move(uptrWindow);
+	return this->createSystems() && this->createEntities();
+}
 
-	return true;
+bool app::Game::createSystems()
+{
+	try
+	{
+		auto uptrWindow = std::make_unique<app::gra::SfWindow>(
+			app::gra::SfWindowParams("Ai Lab 6", 1366u, 768u, app::gra::WindowStyle::Default));
+		m_window = std::move(uptrWindow);
+
+		m_updateSystems = {};
+
+		m_renderSystems = {
+			std::make_unique<app::sys::RenderRectSystem>(*m_window)
+		};
+
+		return true;
+	}
+	catch (std::exception const & e)
+	{
+		app::Console::writeLine({ "Error: [", e.what(), "]" });
+		return false;
+	}
+}
+
+bool app::Game::createEntities()
+{
+	try
+	{
+		js::json file = app::util::JsonLoader::load("./res/entities.json");
+		if (auto const & jsonGrid = file.find("grid"); jsonGrid != file.end())
+		{
+			app::Entity const & grid = app::fact::GridFactory(*jsonGrid).create();
+		}
+
+		return true;
+	}
+	catch (std::exception const & e)
+	{
+		app::Console::writeLine({ "Error: [", e.what(), "]" });
+		return false;
+	}
 }
 
 void app::Game::pollEvents()
@@ -56,10 +106,12 @@ void app::Game::pollEvents()
 
 void app::Game::update(app::time::nanoseconds const & dt)
 {
+	for (std::unique_ptr<sys::BaseSystem> const & uptrSystem : m_updateSystems) { uptrSystem->update(dt); }
 }
 
 void app::Game::render(app::time::nanoseconds const & dt)
 {
 	m_window->clear();
+	for (std::unique_ptr<sys::BaseSystem> const & uptrSystem : m_renderSystems) { uptrSystem->update(dt); }
 	m_window->display();
 }

@@ -149,8 +149,14 @@ C:\windows\system32\xcopy /Y "$(ProjectDir)deps\bin\release\*.dll" "$(TargetDir)
     <None Include="deps\include\.gitkeep" />
     <None Include="deps\lib\debug\.gitkeep" />
     <None Include="deps\lib\release\.gitkeep" />
+    <None Include="res\entities.json" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\components\Dimensions.cpp" />
+    <ClCompile Include="src\components\Location.cpp" />
+    <ClCompile Include="src\components\RenderRect.cpp" />
+    <ClCompile Include="src\factories\EntityFactory.cpp" />
+    <ClCompile Include="src\factories\GridFactory.cpp" />
     <ClCompile Include="src\Game.cpp" />
     <ClCompile Include="src\graphics\SDLDeleter.cpp" />
     <ClCompile Include="src\graphics\SDLWindow.cpp" />
@@ -163,14 +169,26 @@ C:\windows\system32\xcopy /Y "$(ProjectDir)deps\bin\release\*.dll" "$(TargetDir)
     <ClCompile Include="src\input\Keyhandler.cpp" />
     <ClCompile Include="src\input\MouseHandler.cpp" />
     <ClCompile Include="src\main.cpp" />
+    <ClCompile Include="src\math\Vector2.cpp" />
+    <ClCompile Include="src\Registry.cpp" />
     <ClCompile Include="src\stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="src\systems\BaseSystem.cpp" />
+    <ClCompile Include="src\systems\RenderRectSystem.cpp" />
     <ClCompile Include="src\utilities\Console.cpp" />
+    <ClCompile Include="src\utilities\JsonLoader.cpp" />
     <ClCompile Include="src\utilities\Time.cpp" />
+    <ClCompile Include="src\visitors\RenderRectVisitor.cpp" />
+    <ClCompile Include="src\visitors\RenderVisitor.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\components\Dimensions.h" />
+    <ClInclude Include="src\components\Location.h" />
+    <ClInclude Include="src\components\RenderRect.h" />
+    <ClInclude Include="src\factories\EntityFactory.h" />
+    <ClInclude Include="src\factories\GridFactory.h" />
     <ClInclude Include="src\Game.h" />
     <ClInclude Include="src\graphics\SDLDeleter.h" />
     <ClInclude Include="src\graphics\SDLWindow.h" />
@@ -182,9 +200,16 @@ C:\windows\system32\xcopy /Y "$(ProjectDir)deps\bin\release\*.dll" "$(TargetDir)
     <ClInclude Include="src\graphics\WindowStyle.h" />
     <ClInclude Include="src\input\Keyhandler.h" />
     <ClInclude Include="src\input\MouseHandler.h" />
+    <ClInclude Include="src\math\Vector2.h" />
+    <ClInclude Include="src\Registry.h" />
     <ClInclude Include="src\stdafx.h" />
+    <ClInclude Include="src\systems\BaseSystem.h" />
+    <ClInclude Include="src\systems\RenderRectSystem.h" />
     <ClInclude Include="src\utilities\Console.h" />
+    <ClInclude Include="src\utilities\JsonLoader.h" />
     <ClInclude Include="src\utilities\Time.h" />
+    <ClInclude Include="src\visitors\RenderRectVisitor.h" />
+    <ClInclude Include="src\visitors\RenderVisitor.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
