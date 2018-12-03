@@ -149,9 +149,17 @@
 // Json Library
 #include <Js/json.hpp>
 
+#include "input/Keyhandler.h"
+#include "input/MouseHandler.h"
+
 // Global constants
 namespace app
 {
+	namespace inp
+	{
+		using Keyhandler = KeyHandler<sf::Keyboard::Key>;
+		using Mousehandler = MouseHandler<sf::Mouse::Button>;
+	}
 }
 
 #include "utilities/Console.h"

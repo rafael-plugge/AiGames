@@ -22,6 +22,8 @@ void app::sys::RenderRectSystem::update(app::time::nanoseconds const & dt)
 		m_renderShape.setPosition(location.position);
 		m_renderShape.setRotation(location.orientation);
 		std::visit(app::vis::RenderRectVisitor{ m_renderShape }, renderRect.fill);
+		m_renderShape.setOutlineColor(renderRect.stroke.value_or(sf::Color::White));
+		m_renderShape.setOutlineThickness(renderRect.thickness.value_or(0.0f));
 		m_renderShape.setSize(dimensions.size);
 		m_renderShape.setOrigin(dimensions.origin);
 		m_window.draw(m_renderShape, m_renderState);

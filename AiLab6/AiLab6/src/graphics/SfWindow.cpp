@@ -4,16 +4,20 @@
 
 const sf::Color app::gra::SfWindow::s_clearColor = app::gra::SfWindow::backgroundColor();
 
-app::gra::SfWindow::SfWindow()
+app::gra::SfWindow::SfWindow(app::inp::Keyhandler & keyHandler, app::inp::Mousehandler & mouseHandler)
 	: Window()
 	, m_sfWindow(std::make_unique<decltype(m_sfWindow)::element_type>())
+	, m_keyHandler(keyHandler)
+	, m_mouseHandler(mouseHandler)
 {
 }
 
-app::gra::SfWindow::SfWindow(SfWindowParams const parameters)
+app::gra::SfWindow::SfWindow(app::inp::Keyhandler & keyHandler, app::inp::Mousehandler & mouseHandler, SfWindowParams const parameters)
 	: Window(parameters)
 	, m_contextSettings(parameters.contextSettings)
 	, m_sfWindow(std::make_unique<decltype(m_sfWindow)::element_type>(sf::VideoMode(m_size.width, m_size.height), m_title, this->createStyle(m_style), m_contextSettings))
+	, m_keyHandler(keyHandler)
+	, m_mouseHandler(mouseHandler)
 {
 }
 
@@ -51,6 +55,21 @@ void app::gra::SfWindow::pollEvents()
 		case sf::Event::Closed:
 			m_sfWindow->close();
 			m_open = false;
+			break;
+		case sf::Event::KeyPressed:
+			m_keyHandler.updateKey(e.key.code, true);
+			break;
+		case sf::Event::KeyReleased:
+			m_keyHandler.updateKey(e.key.code, false);
+			break;
+		case sf::Event::MouseButtonPressed:
+			m_mouseHandler.updateButton(e.mouseButton.button, true);
+			break;
+		case sf::Event::MouseButtonReleased:
+			m_mouseHandler.updateButton(e.mouseButton.button, false);
+			break;
+		case sf::Event::MouseMoved:
+			m_mouseHandler.updatePosition(e.mouseMove.x, e.mouseMove.y);
 			break;
 		default:
 			break;

@@ -22,6 +22,8 @@ namespace app::comp
 	public: // Public Static Variables
 	public: // Public Member Variables
 		std::variant<std::shared_ptr<sf::Texture>, sf::Color> fill = nullptr;
+		std::optional<sf::Color> stroke;
+		std::optional<float> thickness;
 	protected: // Protected Static Functions
 	protected: // Protected Member Functions
 	protected: // Protected Static Variables

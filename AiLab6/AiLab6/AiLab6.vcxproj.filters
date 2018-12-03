@@ -186,7 +186,19 @@
       <Filter>Source Files\factories</Filter>
     </ClCompile>
     <ClCompile Include="src\factories\GridFactory.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\factories</Filter>
+    </ClCompile>
+    <ClCompile Include="src\components\RenderGrid.cpp">
+      <Filter>Source Files\components</Filter>
+    </ClCompile>
+    <ClCompile Include="src\factories\BackgroundFactory.cpp">
+      <Filter>Source Files\factories</Filter>
+    </ClCompile>
+    <ClCompile Include="src\factories\EntityJsonFactory.cpp">
+      <Filter>Source Files\factories</Filter>
+    </ClCompile>
+    <ClCompile Include="src\systems\RenderGridSystem.cpp">
+      <Filter>Source Files\systems</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -266,7 +278,19 @@
       <Filter>Header Files\factories</Filter>
     </ClInclude>
     <ClInclude Include="src\factories\GridFactory.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\factories</Filter>
+    </ClInclude>
+    <ClInclude Include="src\components\RenderGrid.h">
+      <Filter>Header Files\components</Filter>
+    </ClInclude>
+    <ClInclude Include="src\factories\EntityJsonFactory.h">
+      <Filter>Header Files\factories</Filter>
+    </ClInclude>
+    <ClInclude Include="src\factories\BackgroundFactory.h">
+      <Filter>Header Files\factories</Filter>
+    </ClInclude>
+    <ClInclude Include="src\systems\RenderGridSystem.h">
+      <Filter>Header Files\systems</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

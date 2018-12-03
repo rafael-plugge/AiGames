@@ -1,23 +1,56 @@
 {
-    "grid": {
+    "background": {
         "location": {
             "position": {
-                "x": 683,
-                "y": 384
+                "x": 0,
+                "y": 0
             },
             "orientation": 0
         },
         "dimensions": {
             "size": {
-                "x": 100,
-                "y": 70
+                "x": 1366,
+                "y": 768
+            },
+            "origin": {
+                "x": 0,
+                "y": 0
             }
         },
-        "render": {
+        "renderRect": {
             "color": {
-                "red": 0,
-                "green": 255,
-                "blue": 0
+                "red": 125,
+                "green": 125,
+                "blue": 125
+            }
+        }
+    },
+    "grid": {
+        "location": {
+            "position": {
+                "x": 50,
+                "y": 20
+            },
+            "orientation": 0
+        },
+        "dimensions": {
+            "size": {
+                "x": 1266,
+                "y": 728
+            }
+        },
+        "renderGrid": {
+            "size": {
+                "x": 50,
+                "y": 50
+            },
+            "stroke": {
+                "color": {
+                    "red": 0,
+                    "green": 0,
+                    "blue": 0
+                },
+                "thickness": 1
             }
         }
     }

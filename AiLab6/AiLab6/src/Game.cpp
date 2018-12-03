@@ -8,13 +8,16 @@
 
 // Systems
 #include "systems/RenderRectSystem.h"
+#include "systems/RenderGridSystem.h"
 
 // Factories
-#include "factories/GridFactory.h"
+#include "factories/EntityJsonFactory.h"
 
 app::Game::Game()
 	: m_window(nullptr)
 	, m_registry(app::Reg::get())
+	, m_keyHandler()
+	, m_mouseHandler()
 	, m_updateSystems()
 	, m_renderSystems()
 {
@@ -44,6 +47,8 @@ int app::Game::run()
 		while (elapsedTime > updateStep)
 		{
 			this->update(updateStep);
+			m_keyHandler.update();
+			m_mouseHandler.update();
 			elapsedTime -= updateStep;
 		}
 		this->render(deltaRenderStep);
@@ -61,14 +66,15 @@ bool app::Game::createSystems()
 {
 	try
 	{
-		auto uptrWindow = std::make_unique<app::gra::SfWindow>(
-			app::gra::SfWindowParams("Ai Lab 6", 1366u, 768u, app::gra::WindowStyle::Default));
-		m_window = std::move(uptrWindow);
+		m_window = std::make_unique<app::gra::SfWindow>(m_keyHandler
+			, m_mouseHandler
+			, app::gra::SfWindowParams("Ai Lab 6", 1366u, 768u, app::gra::WindowStyle::Default));
 
 		m_updateSystems = {};
 
 		m_renderSystems = {
-			std::make_unique<app::sys::RenderRectSystem>(*m_window)
+			std::make_unique<app::sys::RenderRectSystem>(*m_window),
+			std::make_unique<app::sys::RenderGridSystem>(*m_window)
 		};
 
 		return true;
@@ -87,7 +93,11 @@ bool app::Game::createEntities()
 		js::json file = app::util::JsonLoader::load("./res/entities.json");
 		if (auto const & jsonGrid = file.find("grid"); jsonGrid != file.end())
 		{
-			app::Entity const & grid = app::fact::GridFactory(*jsonGrid).create();
+			app::Entity const & grid = app::fact::EntityJsonFactory(*jsonGrid).create();
+		}
+		if (auto const & jsonBackground = file.find("background"); jsonBackground != file.end())
+		{
+			app::fact::EntityJsonFactory(*jsonBackground).create();
 		}
 
 		return true;

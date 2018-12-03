@@ -4,14 +4,16 @@
 
 #include "Window.h"
 #include "SfWindowParams.h"
+#include "input/Keyhandler.h"
+#include "input/MouseHandler.h"
 
 namespace app::gra
 {
 	class SfWindow : public Window
 	{
 	public: // Constructors/Destructor/Assignments
-		SfWindow();
-		SfWindow(SfWindowParams const parameters);
+		SfWindow(app::inp::Keyhandler & keyHandler, app::inp::Mousehandler & mouseHandler);
+		SfWindow(app::inp::Keyhandler & keyHandler, app::inp::Mousehandler & mouseHandler, SfWindowParams const parameters);
 
 		virtual ~SfWindow();
 
@@ -44,6 +46,8 @@ namespace app::gra
 	private: // Private Member Variables
 		sf::ContextSettings m_contextSettings;
 		std::unique_ptr<sf::RenderWindow> m_sfWindow;
+		app::inp::Keyhandler & m_keyHandler;
+		app::inp::Mousehandler & m_mouseHandler;
 	};
 }
 

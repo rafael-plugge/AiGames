@@ -154,8 +154,11 @@ C:\windows\system32\xcopy /Y "$(ProjectDir)deps\bin\release\*.dll" "$(TargetDir)
   <ItemGroup>
     <ClCompile Include="src\components\Dimensions.cpp" />
     <ClCompile Include="src\components\Location.cpp" />
+    <ClCompile Include="src\components\RenderGrid.cpp" />
     <ClCompile Include="src\components\RenderRect.cpp" />
+    <ClCompile Include="src\factories\BackgroundFactory.cpp" />
     <ClCompile Include="src\factories\EntityFactory.cpp" />
+    <ClCompile Include="src\factories\EntityJsonFactory.cpp" />
     <ClCompile Include="src\factories\GridFactory.cpp" />
     <ClCompile Include="src\Game.cpp" />
     <ClCompile Include="src\graphics\SDLDeleter.cpp" />
@@ -176,6 +179,7 @@ C:\windows\system32\xcopy /Y "$(ProjectDir)deps\bin\release\*.dll" "$(TargetDir)
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="src\systems\BaseSystem.cpp" />
+    <ClCompile Include="src\systems\RenderGridSystem.cpp" />
     <ClCompile Include="src\systems\RenderRectSystem.cpp" />
     <ClCompile Include="src\utilities\Console.cpp" />
     <ClCompile Include="src\utilities\JsonLoader.cpp" />
@@ -186,8 +190,11 @@ C:\windows\system32\xcopy /Y "$(ProjectDir)deps\bin\release\*.dll" "$(TargetDir)
   <ItemGroup>
     <ClInclude Include="src\components\Dimensions.h" />
     <ClInclude Include="src\components\Location.h" />
+    <ClInclude Include="src\components\RenderGrid.h" />
     <ClInclude Include="src\components\RenderRect.h" />
+    <ClInclude Include="src\factories\BackgroundFactory.h" />
     <ClInclude Include="src\factories\EntityFactory.h" />
+    <ClInclude Include="src\factories\EntityJsonFactory.h" />
     <ClInclude Include="src\factories\GridFactory.h" />
     <ClInclude Include="src\Game.h" />
     <ClInclude Include="src\graphics\SDLDeleter.h" />
@@ -204,6 +211,7 @@ C:\windows\system32\xcopy /Y "$(ProjectDir)deps\bin\release\*.dll" "$(TargetDir)
     <ClInclude Include="src\Registry.h" />
     <ClInclude Include="src\stdafx.h" />
     <ClInclude Include="src\systems\BaseSystem.h" />
+    <ClInclude Include="src\systems\RenderGridSystem.h" />
     <ClInclude Include="src\systems\RenderRectSystem.h" />
     <ClInclude Include="src\utilities\Console.h" />
     <ClInclude Include="src\utilities\JsonLoader.h" />

@@ -123,9 +123,16 @@ app::math::Vector2<T> & app::math::Vector2<T>::unit()
 }
 
 template<typename T>
-app::math::Vector2<T>::operator sf::Vector2<T>()
+app::math::Vector2<T>::operator sf::Vector2<T>() const
 {
 	return sf::Vector2<T>(this->x, this->y);
+}
+
+template<typename T>
+template<typename O>
+app::math::Vector2<T>::operator app::math::Vector2<O>() const
+{
+	return app::math::Vector2<O>(static_cast<O>(this->x), static_cast<O>(this->y));
 }
 
 /************************************************************************/
@@ -250,26 +257,50 @@ template class app::math::Vector2<uint32_t>;
 
 void app::math::to_json(js::json & j, app::math::Vector2d const & v)
 {
-	j["x"] = v.x;
-	j["y"] = v.y;
+	constexpr auto X = "x";
+	constexpr auto Y = "y";
+
+	if (auto const & result = j.find(X); result != j.end()) { (*result) = v.x; }
+	else { j.push_back({ X, v.x }); }
+
+	if (auto const & result = j.find(Y); result != j.end()) { (*result) = v.y; }
+	else { j.push_back({ Y, v.y }); }
 }
 
 void app::math::to_json(js::json & j, app::math::Vector2f const & v)
 {
-	j["x"] = v.x;
-	j["y"] = v.y;
+	constexpr auto X = "x";
+	constexpr auto Y = "y";
+
+	if (auto const & result = j.find(X); result != j.end()) { (*result) = v.x; }
+	else { j.push_back({ X, v.x }); }
+
+	if (auto const & result = j.find(Y); result != j.end()) { (*result) = v.y; }
+	else { j.push_back({ Y, v.y }); }
 }
 
 void app::math::to_json(js::json & j, app::math::Vector2i const & v)
 {
-	j["x"] = v.x;
-	j["y"] = v.y;
+	constexpr auto X = "x";
+	constexpr auto Y = "y";
+
+	if (auto const & result = j.find(X); result != j.end()) { (*result) = v.x; }
+	else { j.push_back({ X, v.x }); }
+
+	if (auto const & result = j.find(Y); result != j.end()) { (*result) = v.y; }
+	else { j.push_back({ Y, v.y }); }
 }
 
 void app::math::to_json(js::json & j, app::math::Vector2u const & v)
 {
-	j["x"] = v.x;
-	j["y"] = v.y;
+	constexpr auto X = "x";
+	constexpr auto Y = "y";
+
+	if (auto const & result = j.find(X); result != j.end()) { (*result) = v.x; }
+	else { j.push_back({ X, v.x }); }
+
+	if (auto const & result = j.find(Y); result != j.end()) { (*result) = v.y; }
+	else { j.push_back({ Y, v.y }); }
 }
 
 void app::math::from_json(js::json const & j, app::math::Vector2d & v)
