@@ -21,7 +21,7 @@ namespace app::comp
 	public: // Public Member Functions
 	public: // Public Static Variables
 	public: // Public Member Variables
-		math::Vector2f size = { 0.0f, 0.0f };
+		math::Vector2u size = { 0u, 0u };
 		std::optional<sf::Color> stroke;
 		std::optional<float> thickness;
 	protected: // Protected Static Functions

@@ -1,6 +1,8 @@
 ﻿#ifndef _MOUSE_HANDLER_H
 #define _MOUSE_HANDLER_H
 
+#include "math/Vector2.h"
+
 namespace app::inp
 {
 	template<typename ButtonType>
@@ -30,7 +32,7 @@ namespace app::inp
 		bool isButtonUp(std::initializer_list<ButtonType> const & buttons) const;
 		bool isButtonPressed(ButtonType const & button) const;
 		bool isButtonPressed(std::initializer_list<ButtonType> const & buttons) const;
-		constexpr std::tuple<std::int32_t, std::int32_t> const getPosition() const { return { m_mouse.x, m_mouse.y }; }
+		constexpr math::Vector2i const getPosition() const { return m_mouse; }
 	public: // Public Static Variables
 	public: // Public Member Variables
 	protected: // Protected Static Functions
@@ -47,10 +49,7 @@ namespace app::inp
 	private: // Private Member Variables
 		map m_keyNowMap;
 		map m_keyPrevMap;
-		struct
-		{
-			std::int32_t x = 0, y = 0;
-		}m_mouse;
+		math::Vector2i m_mouse = { 0, 0 };
 	};
 
 	#pragma region Implementation

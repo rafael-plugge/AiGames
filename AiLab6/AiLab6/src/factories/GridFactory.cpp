@@ -12,7 +12,7 @@ app::fact::GridFactory::GridFactory(js::json const & j)
 {
 }
 
-app::Entity const app::fact::GridFactory::create()
+std::optional<app::Entity const> app::fact::GridFactory::create()
 {
 	app::Entity const entity = m_registry.create();
 

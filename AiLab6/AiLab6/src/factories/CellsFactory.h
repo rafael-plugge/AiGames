@@ -1,37 +1,37 @@
-﻿#ifndef _FACTORY_ENTITY_JSON_H
-#define _FACTORY_ENTITY_JSON_H
+﻿#ifndef _FACTORY_CELL_H
+#define _FACTORY_CELL_H
 
 #include "EntityFactory.h"
 
 namespace app::fact
 {
-	class EntityJsonFactory : public EntityFactory
+	class CellsFactory : public EntityFactory
 	{
 	public: // Constructors/Destructor/Assignments
-		EntityJsonFactory(js::json const & j);
-		virtual ~EntityJsonFactory() = default;
+		CellsFactory(js::json const & j);
+		~CellsFactory() = default;
 
-		EntityJsonFactory(EntityJsonFactory const &) = default;
-		EntityJsonFactory & operator=(EntityJsonFactory const &) = default;
+		CellsFactory(CellsFactory const &) = default;
+		CellsFactory & operator=(CellsFactory const &) = default;
 
-		EntityJsonFactory(EntityJsonFactory &&) = default;
-		EntityJsonFactory & operator=(EntityJsonFactory &&) = default;
+		CellsFactory(CellsFactory &&) = default;
+		CellsFactory & operator=(CellsFactory &&) = default;
 
 	public: // Public Static Functions
 	public: // Public Member Functions
+		virtual std::optional<app::Entity const> create() override;
 	public: // Public Static Variables
 	public: // Public Member Variables
-		virtual std::optional<app::Entity const> create() override;
 	protected: // Protected Static Functions
 	protected: // Protected Member Functions
 	protected: // Protected Static Variables
 	protected: // Protected Member Variables
-		js::json const & m_json;
 	private: // Private Static Functions
 	private: // Private Member Functions
 	private: // Private Static Variables
 	private: // Private Member Variables
+		js::json const & m_json;
 	};
 }
 
-#endif // !_FACTORY_ENTITY_JSON_H
+#endif // !_FACTORY_CELL_H

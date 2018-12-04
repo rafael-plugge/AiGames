@@ -7,11 +7,13 @@
 #include "components/RenderRect.h"
 
 // Systems
+#include "systems/CellClickSystem.h"
 #include "systems/RenderRectSystem.h"
 #include "systems/RenderGridSystem.h"
 
 // Factories
 #include "factories/EntityJsonFactory.h"
+#include "factories/CellsFactory.h"
 
 app::Game::Game()
 	: m_window(nullptr)
@@ -66,15 +68,15 @@ bool app::Game::createSystems()
 {
 	try
 	{
-		m_window = std::make_unique<app::gra::SfWindow>(m_keyHandler
-			, m_mouseHandler
-			, app::gra::SfWindowParams("Ai Lab 6", 1366u, 768u, app::gra::WindowStyle::Default));
+		m_window = std::make_unique<app::gra::SfWindow>(m_keyHandler, m_mouseHandler,
+			app::gra::SfWindowParams("Ai Lab 6", 1366u, 768u, app::gra::WindowStyle::Default));
 
-		m_updateSystems = {};
+		m_updateSystems = {
+			std::make_unique<app::sys::CellClickSystem>(m_mouseHandler)
+		};
 
 		m_renderSystems = {
-			std::make_unique<app::sys::RenderRectSystem>(*m_window),
-			std::make_unique<app::sys::RenderGridSystem>(*m_window)
+			std::make_unique<app::sys::RenderRectSystem>(*m_window)
 		};
 
 		return true;
@@ -91,9 +93,9 @@ bool app::Game::createEntities()
 	try
 	{
 		js::json file = app::util::JsonLoader::load("./res/entities.json");
-		if (auto const & jsonGrid = file.find("grid"); jsonGrid != file.end())
+		if (auto const & jsonCells = file.find("cells"); jsonCells != file.end())
 		{
-			app::Entity const & grid = app::fact::EntityJsonFactory(*jsonGrid).create();
+			app::fact::CellsFactory(*jsonCells).create();
 		}
 		if (auto const & jsonBackground = file.find("background"); jsonBackground != file.end())
 		{

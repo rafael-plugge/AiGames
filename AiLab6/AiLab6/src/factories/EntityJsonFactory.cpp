@@ -12,7 +12,7 @@ app::fact::EntityJsonFactory::EntityJsonFactory(js::json const & j)
 {
 }
 
-app::Entity const app::fact::EntityJsonFactory::create()
+std::optional<app::Entity const> app::fact::EntityJsonFactory::create()
 {
 	app::Entity const entity = m_registry.create();
 

@@ -38,6 +38,7 @@ namespace app::math
 		T magnitude() const;
 		Vector2<T> & unit();
 
+		operator std::string() const;
 		operator sf::Vector2<T>() const;
 		
 		template<typename O> operator Vector2<O>() const;

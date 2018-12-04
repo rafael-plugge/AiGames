@@ -152,11 +152,13 @@ C:\windows\system32\xcopy /Y "$(ProjectDir)deps\bin\release\*.dll" "$(TargetDir)
     <None Include="res\entities.json" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\components\Cell.cpp" />
     <ClCompile Include="src\components\Dimensions.cpp" />
     <ClCompile Include="src\components\Location.cpp" />
     <ClCompile Include="src\components\RenderGrid.cpp" />
     <ClCompile Include="src\components\RenderRect.cpp" />
     <ClCompile Include="src\factories\BackgroundFactory.cpp" />
+    <ClCompile Include="src\factories\CellsFactory.cpp" />
     <ClCompile Include="src\factories\EntityFactory.cpp" />
     <ClCompile Include="src\factories\EntityJsonFactory.cpp" />
     <ClCompile Include="src\factories\GridFactory.cpp" />
@@ -179,6 +181,7 @@ C:\windows\system32\xcopy /Y "$(ProjectDir)deps\bin\release\*.dll" "$(TargetDir)
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="src\systems\BaseSystem.cpp" />
+    <ClCompile Include="src\systems\CellClickSystem.cpp" />
     <ClCompile Include="src\systems\RenderGridSystem.cpp" />
     <ClCompile Include="src\systems\RenderRectSystem.cpp" />
     <ClCompile Include="src\utilities\Console.cpp" />
@@ -188,11 +191,13 @@ C:\windows\system32\xcopy /Y "$(ProjectDir)deps\bin\release\*.dll" "$(TargetDir)
     <ClCompile Include="src\visitors\RenderVisitor.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\components\Cell.h" />
     <ClInclude Include="src\components\Dimensions.h" />
     <ClInclude Include="src\components\Location.h" />
     <ClInclude Include="src\components\RenderGrid.h" />
     <ClInclude Include="src\components\RenderRect.h" />
     <ClInclude Include="src\factories\BackgroundFactory.h" />
+    <ClInclude Include="src\factories\CellsFactory.h" />
     <ClInclude Include="src\factories\EntityFactory.h" />
     <ClInclude Include="src\factories\EntityJsonFactory.h" />
     <ClInclude Include="src\factories\GridFactory.h" />
@@ -211,6 +216,7 @@ C:\windows\system32\xcopy /Y "$(ProjectDir)deps\bin\release\*.dll" "$(TargetDir)
     <ClInclude Include="src\Registry.h" />
     <ClInclude Include="src\stdafx.h" />
     <ClInclude Include="src\systems\BaseSystem.h" />
+    <ClInclude Include="src\systems\CellClickSystem.h" />
     <ClInclude Include="src\systems\RenderGridSystem.h" />
     <ClInclude Include="src\systems\RenderRectSystem.h" />
     <ClInclude Include="src\utilities\Console.h" />

@@ -123,6 +123,12 @@ app::math::Vector2<T> & app::math::Vector2<T>::unit()
 }
 
 template<typename T>
+app::math::Vector2<T>::operator std::string() const
+{
+	return std::to_string(this->x) + ", " + std::to_string(this->y);
+}
+
+template<typename T>
 app::math::Vector2<T>::operator sf::Vector2<T>() const
 {
 	return sf::Vector2<T>(this->x, this->y);

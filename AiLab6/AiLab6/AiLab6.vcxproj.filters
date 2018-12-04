@@ -200,6 +200,15 @@
     <ClCompile Include="src\systems\RenderGridSystem.cpp">
       <Filter>Source Files\systems</Filter>
     </ClCompile>
+    <ClCompile Include="src\components\Cell.cpp">
+      <Filter>Source Files\components</Filter>
+    </ClCompile>
+    <ClCompile Include="src\systems\CellClickSystem.cpp">
+      <Filter>Source Files\systems</Filter>
+    </ClCompile>
+    <ClCompile Include="src\factories\CellsFactory.cpp">
+      <Filter>Source Files\factories</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\stdafx.h">
@@ -291,6 +300,15 @@
     </ClInclude>
     <ClInclude Include="src\systems\RenderGridSystem.h">
       <Filter>Header Files\systems</Filter>
+    </ClInclude>
+    <ClInclude Include="src\systems\CellClickSystem.h">
+      <Filter>Header Files\systems</Filter>
+    </ClInclude>
+    <ClInclude Include="src\components\Cell.h">
+      <Filter>Header Files\components</Filter>
+    </ClInclude>
+    <ClInclude Include="src\factories\CellsFactory.h">
+      <Filter>Header Files\factories</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
