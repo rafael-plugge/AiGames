@@ -1,27 +1,28 @@
-﻿#ifndef _COMPONENT_CELL_H
-#define _COMPONENT_CELL_H
+﻿#ifndef _COMPONENT_GRID_H
+#define _COMPONENT_GRID_H
 
-#include "math/Vector2.h"
+#include "lab/Block.h"
 
 namespace app::comp
 {
-	struct Cell
+	struct Grid
 	{
 	public: // Constructors/Destructor/Assignments
-		Cell() = default;
-		~Cell() = default;
+		Grid() = default;
+		~Grid() = default;
 
-		Cell(Cell const &) = default;
-		Cell & operator=(Cell const &) = default;
+		Grid(Grid const &) = default;
+		Grid & operator=(Grid const &) = default;
 
-		Cell(Cell &&) = default;
-		Cell & operator=(Cell &&) = default;
+		Grid(Grid &&) = default;
+		Grid & operator=(Grid &&) = default;
 
 	public: // Public Static Functions
 	public: // Public Member Functions
 	public: // Public Static Variables
 	public: // Public Member Variables
-		bool clicked = false;
+		std::size_t width = 0u, height = 0u;
+		std::vector<std::vector<lab::Block>> blocks;
 	protected: // Protected Static Functions
 	protected: // Protected Member Functions
 	protected: // Protected Static Variables
@@ -32,8 +33,8 @@ namespace app::comp
 	private: // Private Member Variables
 	};
 
-	void to_json(js::json & j, app::comp::Cell const & cell);
-	void from_json(js::json const & j, app::comp::Cell & cell);
+	void to_json(js::json & j, app::comp::Grid const & grid);
+	void from_json(js::json const & j, app::comp::Grid & grid);
 }
 
-#endif // !_COMPONENT_CELL_H
+#endif // !_COMPONENT_GRID_H

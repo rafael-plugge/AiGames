@@ -154,6 +154,7 @@ C:\windows\system32\xcopy /Y "$(ProjectDir)deps\bin\release\*.dll" "$(TargetDir)
   <ItemGroup>
     <ClCompile Include="src\components\Cell.cpp" />
     <ClCompile Include="src\components\Dimensions.cpp" />
+    <ClCompile Include="src\components\Grid.cpp" />
     <ClCompile Include="src\components\Location.cpp" />
     <ClCompile Include="src\components\RenderGrid.cpp" />
     <ClCompile Include="src\components\RenderRect.cpp" />
@@ -161,7 +162,6 @@ C:\windows\system32\xcopy /Y "$(ProjectDir)deps\bin\release\*.dll" "$(TargetDir)
     <ClCompile Include="src\factories\CellsFactory.cpp" />
     <ClCompile Include="src\factories\EntityFactory.cpp" />
     <ClCompile Include="src\factories\EntityJsonFactory.cpp" />
-    <ClCompile Include="src\factories\GridFactory.cpp" />
     <ClCompile Include="src\Game.cpp" />
     <ClCompile Include="src\graphics\SDLDeleter.cpp" />
     <ClCompile Include="src\graphics\SDLWindow.cpp" />
@@ -173,6 +173,7 @@ C:\windows\system32\xcopy /Y "$(ProjectDir)deps\bin\release\*.dll" "$(TargetDir)
     <ClCompile Include="src\graphics\WindowStyle.cpp" />
     <ClCompile Include="src\input\Keyhandler.cpp" />
     <ClCompile Include="src\input\MouseHandler.cpp" />
+    <ClCompile Include="src\lab\Block.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\math\Vector2.cpp" />
     <ClCompile Include="src\Registry.cpp" />
@@ -182,8 +183,10 @@ C:\windows\system32\xcopy /Y "$(ProjectDir)deps\bin\release\*.dll" "$(TargetDir)
     </ClCompile>
     <ClCompile Include="src\systems\BaseSystem.cpp" />
     <ClCompile Include="src\systems\CellClickSystem.cpp" />
+    <ClCompile Include="src\systems\GridClickSystem.cpp" />
     <ClCompile Include="src\systems\RenderGridSystem.cpp" />
     <ClCompile Include="src\systems\RenderRectSystem.cpp" />
+    <ClCompile Include="src\utilities\CollisionChecking.cpp" />
     <ClCompile Include="src\utilities\Console.cpp" />
     <ClCompile Include="src\utilities\JsonLoader.cpp" />
     <ClCompile Include="src\utilities\Time.cpp" />
@@ -193,6 +196,7 @@ C:\windows\system32\xcopy /Y "$(ProjectDir)deps\bin\release\*.dll" "$(TargetDir)
   <ItemGroup>
     <ClInclude Include="src\components\Cell.h" />
     <ClInclude Include="src\components\Dimensions.h" />
+    <ClInclude Include="src\components\Grid.h" />
     <ClInclude Include="src\components\Location.h" />
     <ClInclude Include="src\components\RenderGrid.h" />
     <ClInclude Include="src\components\RenderRect.h" />
@@ -200,7 +204,6 @@ C:\windows\system32\xcopy /Y "$(ProjectDir)deps\bin\release\*.dll" "$(TargetDir)
     <ClInclude Include="src\factories\CellsFactory.h" />
     <ClInclude Include="src\factories\EntityFactory.h" />
     <ClInclude Include="src\factories\EntityJsonFactory.h" />
-    <ClInclude Include="src\factories\GridFactory.h" />
     <ClInclude Include="src\Game.h" />
     <ClInclude Include="src\graphics\SDLDeleter.h" />
     <ClInclude Include="src\graphics\SDLWindow.h" />
@@ -212,13 +215,16 @@ C:\windows\system32\xcopy /Y "$(ProjectDir)deps\bin\release\*.dll" "$(TargetDir)
     <ClInclude Include="src\graphics\WindowStyle.h" />
     <ClInclude Include="src\input\Keyhandler.h" />
     <ClInclude Include="src\input\MouseHandler.h" />
+    <ClInclude Include="src\lab\Block.h" />
     <ClInclude Include="src\math\Vector2.h" />
     <ClInclude Include="src\Registry.h" />
     <ClInclude Include="src\stdafx.h" />
     <ClInclude Include="src\systems\BaseSystem.h" />
     <ClInclude Include="src\systems\CellClickSystem.h" />
+    <ClInclude Include="src\systems\GridClickSystem.h" />
     <ClInclude Include="src\systems\RenderGridSystem.h" />
     <ClInclude Include="src\systems\RenderRectSystem.h" />
+    <ClInclude Include="src\utilities\CollisionChecking.h" />
     <ClInclude Include="src\utilities\Console.h" />
     <ClInclude Include="src\utilities\JsonLoader.h" />
     <ClInclude Include="src\utilities\Time.h" />

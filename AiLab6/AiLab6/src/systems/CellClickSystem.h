@@ -8,6 +8,7 @@
 #include "components/Location.h"
 #include "components/Dimensions.h"
 #include "components/Cell.h"
+#include "components/RenderRect.h"
 
 namespace app::sys
 {
@@ -15,7 +16,7 @@ namespace app::sys
 	{
 	private: // Private typedefs/usings/enums
 		using VectorCallback = 
-			std::vector<std::function<void(app::Entity const, comp::Location &, comp::Dimensions &, comp::Cell &)>>;
+			std::vector<std::function<void(app::Entity const, comp::Location &, comp::Dimensions &, comp::Cell &, comp::RenderRect &)>>;
 	public: // Constructors/Destructor/Assignments
 		CellClickSystem(app::inp::Mousehandler const & mouseHandler);
 		CellClickSystem(app::inp::Mousehandler const & mouseHandler, VectorCallback::value_type const & callback);
@@ -44,6 +45,8 @@ namespace app::sys
 	private: // Private Member Variables
 		app::inp::Mousehandler const & m_mouseHandler;
 		VectorCallback const m_callbacks;
+		sf::Color const m_clickedColor;
+		sf::Color const m_unclickedColor;
 	};
 }
 

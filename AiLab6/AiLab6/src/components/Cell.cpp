@@ -11,5 +11,5 @@ void app::comp::to_json(js::json & j, app::comp::Cell const & cell)
 
 void app::comp::from_json(js::json const & j, app::comp::Cell & cell)
 {
-	//cell.i = j.at("T").get<decltype(cell.i)>();
+	//cell.clicked = j.at("T").get<decltype(cell.i)>();
 }

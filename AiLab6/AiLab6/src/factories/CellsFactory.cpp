@@ -19,8 +19,10 @@ std::optional<app::Entity const> app::fact::CellsFactory::create()
 
 	auto cellsLocation = m_json.at("location").get<comp::Location>();
 	auto cellsDimensions = m_json.at("dimensions").get<comp::Dimensions>();
-	auto cell = m_json.at("cell").get<comp::Cell>();
 	auto renderRect = m_json.at("renderRect").get<comp::RenderRect>();
+
+	auto cell = comp::Cell();
+	cell.clicked = false;
 
 	auto dimensions = comp::Dimensions();
 	dimensions.size = {

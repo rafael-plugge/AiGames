@@ -85,6 +85,12 @@
     <Filter Include="Header Files\factories">
       <UniqueIdentifier>{8c29fbd8-e023-4d75-b8cc-b489abd422af}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\lab">
+      <UniqueIdentifier>{20664708-7053-45c5-80ca-4c2d36a6c22b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\lab">
+      <UniqueIdentifier>{23cb97e5-3c48-4e67-9153-3b01190e88da}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="deps\bin\debug\.gitkeep">
@@ -185,9 +191,6 @@
     <ClCompile Include="src\factories\EntityFactory.cpp">
       <Filter>Source Files\factories</Filter>
     </ClCompile>
-    <ClCompile Include="src\factories\GridFactory.cpp">
-      <Filter>Source Files\factories</Filter>
-    </ClCompile>
     <ClCompile Include="src\components\RenderGrid.cpp">
       <Filter>Source Files\components</Filter>
     </ClCompile>
@@ -208,6 +211,18 @@
     </ClCompile>
     <ClCompile Include="src\factories\CellsFactory.cpp">
       <Filter>Source Files\factories</Filter>
+    </ClCompile>
+    <ClCompile Include="src\components\Grid.cpp">
+      <Filter>Source Files\components</Filter>
+    </ClCompile>
+    <ClCompile Include="src\utilities\CollisionChecking.cpp">
+      <Filter>Source Files\utilities</Filter>
+    </ClCompile>
+    <ClCompile Include="src\systems\GridClickSystem.cpp">
+      <Filter>Source Files\systems</Filter>
+    </ClCompile>
+    <ClCompile Include="src\lab\Block.cpp">
+      <Filter>Source Files\lab</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -286,9 +301,6 @@
     <ClInclude Include="src\factories\EntityFactory.h">
       <Filter>Header Files\factories</Filter>
     </ClInclude>
-    <ClInclude Include="src\factories\GridFactory.h">
-      <Filter>Header Files\factories</Filter>
-    </ClInclude>
     <ClInclude Include="src\components\RenderGrid.h">
       <Filter>Header Files\components</Filter>
     </ClInclude>
@@ -309,6 +321,18 @@
     </ClInclude>
     <ClInclude Include="src\factories\CellsFactory.h">
       <Filter>Header Files\factories</Filter>
+    </ClInclude>
+    <ClInclude Include="src\components\Grid.h">
+      <Filter>Header Files\components</Filter>
+    </ClInclude>
+    <ClInclude Include="src\utilities\CollisionChecking.h">
+      <Filter>Header Files\utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="src\systems\GridClickSystem.h">
+      <Filter>Header Files\systems</Filter>
+    </ClInclude>
+    <ClInclude Include="src\lab\Block.h">
+      <Filter>Header Files\lab</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
