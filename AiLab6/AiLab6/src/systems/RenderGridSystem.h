@@ -36,6 +36,7 @@ namespace app::sys
 		sf::RenderTexture m_renderTarget;
 		sf::RectangleShape m_renderShape;
 		sf::RenderStates const m_renderStates;
+		sf::Color const m_clickedColor;
 	};
 }
 

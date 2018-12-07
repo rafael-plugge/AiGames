@@ -224,6 +224,9 @@
     <ClCompile Include="src\lab\Block.cpp">
       <Filter>Source Files\lab</Filter>
     </ClCompile>
+    <ClCompile Include="src\factories\GridFactory.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\stdafx.h">
@@ -333,6 +336,9 @@
     </ClInclude>
     <ClInclude Include="src\lab\Block.h">
       <Filter>Header Files\lab</Filter>
+    </ClInclude>
+    <ClInclude Include="src\factories\GridFactory.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

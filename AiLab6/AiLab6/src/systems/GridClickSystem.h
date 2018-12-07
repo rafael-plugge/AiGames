@@ -8,7 +8,7 @@ namespace app::sys
 	class GridClickSystem : public BaseSystem
 	{
 	public: // Constructors/Destructor/Assignments
-		GridClickSystem(app::inp::Mousehandler & mouseHandler);
+		GridClickSystem(app::inp::Mousehandler & mouseHandler, app::inp::Keyhandler & keyHandler);
 		virtual ~GridClickSystem() = default;
 
 		GridClickSystem(GridClickSystem const &) = default;
@@ -30,7 +30,8 @@ namespace app::sys
 	private: // Private Member Functions
 	private: // Private Static Variables
 	private: // Private Member Variables
-		app::inp::Mousehandler m_mouseHandler;
+		app::inp::Keyhandler & m_keyHandler;
+		app::inp::Mousehandler & m_mouseHandler;
 	};
 }
 

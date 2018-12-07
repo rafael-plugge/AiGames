@@ -23,6 +23,9 @@ namespace app::comp
 	public: // Public Member Variables
 		std::size_t width = 0u, height = 0u;
 		std::vector<std::vector<lab::Block>> blocks;
+		std::optional<std::array<std::size_t, 2>> start;
+		std::optional<std::array<std::size_t, 2>> goal;
+		std::vector<std::array<std::size_t, 2>> walls;
 	protected: // Protected Static Functions
 	protected: // Protected Member Functions
 	protected: // Protected Static Variables

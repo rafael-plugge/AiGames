@@ -36,6 +36,7 @@ namespace app
 	private: // Private Static Functions
 	private: // Private Member Functions
 		bool init();
+		bool createComponentDependencies();
 		bool createSystems();
 		bool createEntities();
 
@@ -49,7 +50,7 @@ namespace app
 		app::inp::Keyhandler m_keyHandler;
 		app::inp::Mousehandler m_mouseHandler;
 		std::array<std::unique_ptr<sys::BaseSystem>, 1> m_updateSystems;
-		std::array<std::unique_ptr<sys::BaseSystem>, 1> m_renderSystems;
+		std::array<std::unique_ptr<sys::BaseSystem>, 2> m_renderSystems;
 	};
 }
 

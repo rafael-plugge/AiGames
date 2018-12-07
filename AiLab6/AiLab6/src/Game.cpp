@@ -2,18 +2,19 @@
 #include "Game.h"
 
 // Components
-#include "components/Location.h"
-#include "components/Dimensions.h"
-#include "components/RenderRect.h"
+#include "components/Grid.h"
+#include "components/RenderGrid.h"
 
 // Systems
 #include "systems/CellClickSystem.h"
+#include "systems/GridClickSystem.h"
 #include "systems/RenderRectSystem.h"
 #include "systems/RenderGridSystem.h"
 
 // Factories
 #include "factories/EntityJsonFactory.h"
 #include "factories/CellsFactory.h"
+#include "factories/GridFactory.h"
 
 app::Game::Game()
 	: m_window(nullptr)
@@ -61,7 +62,23 @@ int app::Game::run()
 
 bool app::Game::init()
 {
-	return this->createSystems() && this->createEntities();
+	return this->createComponentDependencies()
+		&& this->createSystems()
+		&& this->createEntities();
+}
+
+bool app::Game::createComponentDependencies()
+{
+	try
+	{
+		entt::connect<comp::Grid>(m_registry.construction<comp::RenderGrid>());
+		return true;
+	}
+	catch (std::exception const & e)
+	{
+		app::Console::writeLine({ "Error: [", e.what(), "]"});
+		return false;
+	}
 }
 
 bool app::Game::createSystems()
@@ -72,11 +89,12 @@ bool app::Game::createSystems()
 			app::gra::SfWindowParams("Ai Lab 6", 1366u, 768u, app::gra::WindowStyle::Default));
 
 		m_updateSystems = {
-			std::make_unique<app::sys::CellClickSystem>(m_mouseHandler)
+			std::make_unique<app::sys::GridClickSystem>(m_mouseHandler, m_keyHandler)
 		};
 
 		m_renderSystems = {
-			std::make_unique<app::sys::RenderRectSystem>(*m_window)
+			std::make_unique<app::sys::RenderRectSystem>(*m_window),
+			std::make_unique<app::sys::RenderGridSystem>(*m_window)
 		};
 
 		return true;
@@ -93,9 +111,9 @@ bool app::Game::createEntities()
 	try
 	{
 		js::json file = app::util::JsonLoader::load("./res/entities.json");
-		if (auto const & jsonCells = file.find("cells"); jsonCells != file.end())
+		if (auto const & jsonGrid = file.find("grid"); jsonGrid != file.end())
 		{
-			app::fact::CellsFactory(*jsonCells).create();
+			app::fact::GridFactory(*jsonGrid).create();
 		}
 		if (auto const & jsonBackground = file.find("background"); jsonBackground != file.end())
 		{

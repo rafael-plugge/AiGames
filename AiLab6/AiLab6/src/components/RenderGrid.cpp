@@ -3,7 +3,6 @@
 
 void app::comp::to_json(js::json & j, app::comp::RenderGrid const & renderGrid)
 {
-	constexpr auto SIZE = "size";
 	constexpr auto STROKE = "stroke";
 	constexpr auto COLOR = "color";
 	constexpr auto RED = "red";
@@ -11,9 +10,6 @@ void app::comp::to_json(js::json & j, app::comp::RenderGrid const & renderGrid)
 	constexpr auto BLUE = "blue";
 	constexpr auto ALPHA = "alpha";
 	constexpr auto THICKNESS = "thickness";
-
-	if (auto const & result = j.find(SIZE); result != j.end()) { (*result) = renderGrid.size; }
-	else { j.push_back({ SIZE, renderGrid.size }); }
 
 	if (auto const & jsonStroke = j.find(STROKE); jsonStroke != j.end())
 	{
@@ -50,7 +46,6 @@ void app::comp::to_json(js::json & j, app::comp::RenderGrid const & renderGrid)
 
 void app::comp::from_json(js::json const & j, app::comp::RenderGrid & renderGrid)
 {
-	renderGrid.size = j.at("size").get<decltype(renderGrid.size)>();
 	constexpr auto STROKE = "stroke";
 	if (auto const & jsonStroke = j.find(STROKE); jsonStroke != j.end())
 	{

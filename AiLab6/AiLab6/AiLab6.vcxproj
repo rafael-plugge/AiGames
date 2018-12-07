@@ -162,6 +162,7 @@ C:\windows\system32\xcopy /Y "$(ProjectDir)deps\bin\release\*.dll" "$(TargetDir)
     <ClCompile Include="src\factories\CellsFactory.cpp" />
     <ClCompile Include="src\factories\EntityFactory.cpp" />
     <ClCompile Include="src\factories\EntityJsonFactory.cpp" />
+    <ClCompile Include="src\factories\GridFactory.cpp" />
     <ClCompile Include="src\Game.cpp" />
     <ClCompile Include="src\graphics\SDLDeleter.cpp" />
     <ClCompile Include="src\graphics\SDLWindow.cpp" />
@@ -204,6 +205,7 @@ C:\windows\system32\xcopy /Y "$(ProjectDir)deps\bin\release\*.dll" "$(TargetDir)
     <ClInclude Include="src\factories\CellsFactory.h" />
     <ClInclude Include="src\factories\EntityFactory.h" />
     <ClInclude Include="src\factories\EntityJsonFactory.h" />
+    <ClInclude Include="src\factories\GridFactory.h" />
     <ClInclude Include="src\Game.h" />
     <ClInclude Include="src\graphics\SDLDeleter.h" />
     <ClInclude Include="src\graphics\SDLWindow.h" />
