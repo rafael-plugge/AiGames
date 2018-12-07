@@ -45,10 +45,10 @@ namespace app
 		void render(app::time::nanoseconds const & dt);
 	private: // Private Static Variables
 	private: // Private Member Variables
-		std::unique_ptr<app::gra::SfWindow> m_window;
 		app::Registry & m_registry;
 		app::inp::Keyhandler m_keyHandler;
 		app::inp::Mousehandler m_mouseHandler;
+		app::gra::SfWindow m_window;
 		std::array<std::unique_ptr<sys::BaseSystem>, 1> m_updateSystems;
 		std::array<std::unique_ptr<sys::BaseSystem>, 2> m_renderSystems;
 	};

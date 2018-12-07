@@ -17,10 +17,11 @@
 #include "factories/GridFactory.h"
 
 app::Game::Game()
-	: m_window(nullptr)
-	, m_registry(app::Reg::get())
+	: m_registry(app::Reg::get())
 	, m_keyHandler()
 	, m_mouseHandler()
+	, m_window(m_keyHandler, m_mouseHandler,
+		app::gra::SfWindowParams("Ai Lab 6", 1366u, 768u, app::gra::WindowStyle::Default))
 	, m_updateSystems()
 	, m_renderSystems()
 {
@@ -41,7 +42,7 @@ int app::Game::run()
 
 	if (!this->init()) { return EXIT_FAILURE; }
 
-	while (m_window->isOpen())
+	while (m_window.isOpen())
 	{
 		this->pollEvents();
 		deltaRenderStep =
@@ -85,16 +86,13 @@ bool app::Game::createSystems()
 {
 	try
 	{
-		m_window = std::make_unique<app::gra::SfWindow>(m_keyHandler, m_mouseHandler,
-			app::gra::SfWindowParams("Ai Lab 6", 1366u, 768u, app::gra::WindowStyle::Default));
-
 		m_updateSystems = {
 			std::make_unique<app::sys::GridClickSystem>(m_mouseHandler, m_keyHandler)
 		};
 
 		m_renderSystems = {
-			std::make_unique<app::sys::RenderRectSystem>(*m_window),
-			std::make_unique<app::sys::RenderGridSystem>(*m_window)
+			std::make_unique<app::sys::RenderRectSystem>(m_window),
+			std::make_unique<app::sys::RenderGridSystem>(m_window)
 		};
 
 		return true;
@@ -131,7 +129,7 @@ bool app::Game::createEntities()
 
 void app::Game::pollEvents()
 {
-	m_window->pollEvents();
+	m_window.pollEvents();
 }
 
 void app::Game::update(app::time::nanoseconds const & dt)
@@ -141,7 +139,7 @@ void app::Game::update(app::time::nanoseconds const & dt)
 
 void app::Game::render(app::time::nanoseconds const & dt)
 {
-	m_window->clear();
+	m_window.clear();
 	for (std::unique_ptr<sys::BaseSystem> const & uptrSystem : m_renderSystems) { uptrSystem->update(dt); }
-	m_window->display();
+	m_window.display();
 }
