@@ -225,7 +225,7 @@
       <Filter>Source Files\lab</Filter>
     </ClCompile>
     <ClCompile Include="src\factories\GridFactory.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\factories</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -338,7 +338,7 @@
       <Filter>Header Files\lab</Filter>
     </ClInclude>
     <ClInclude Include="src\factories\GridFactory.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\factories</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
